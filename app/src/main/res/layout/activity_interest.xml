@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#E8F192"
+    tools:context=".InterestActivity">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/interest_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Let’s Personalize Your Matchmaking Experience!"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/interest_txt"
+            android:padding="4dp"
+            android:text="Your preferences help us find better matches :)"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card1"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardBackgroundColor="#FFE0B2"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <TextView
+                        android:layout_width="192dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/hobbies_daily_lifestyle"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="210dp"
+                        android:src="@drawable/hobby"
+
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card2"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardBackgroundColor="#FB8D84"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <TextView
+                        android:layout_width="238dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/relationship_family_preferences"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="120dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/family"
+                        android:layout_marginLeft="245dp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card3"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardBackgroundColor="#FFD3B6"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <TextView
+                        android:layout_width="233dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/personal_interests_passions"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="135dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="230dp"
+                        android:src="@drawable/passion" />
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card4"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardBackgroundColor="#FDD68D"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+                    <TextView
+                        android:layout_width="233dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/religious_cultural_identity"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="135dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/cultural_identity"
+                        android:layout_marginLeft="230dp"/>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card5"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardBackgroundColor="#CFD6F8"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <TextView
+                        android:layout_width="248dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:text="@string/communication_social_preferences"
+                        android:textColor="@color/black"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+                    <ImageView
+                        android:layout_width="130dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/social_communication"
+                        android:layout_marginLeft="230dp"/>
+
+
+                </androidx.cardview.widget.CardView>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="20dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSave"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/save_continue"
+                        android:textColor="@color/white"
+                        android:layout_marginEnd="15dp"
+                        android:backgroundTint="@color/peach"
+                        style="@style/Widget.MaterialComponents.Button"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+</LinearLayout>

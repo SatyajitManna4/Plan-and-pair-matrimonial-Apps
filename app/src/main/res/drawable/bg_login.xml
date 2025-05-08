@@ -1,0 +1,12 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <bitmap
+            android:src="@drawable/login_bg"
+            android:gravity="center"/>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#40B7B16B"/> <!-- Sage Green Tint with 50% Transparency -->
+        </shape>
+    </item>
+</layer-list>

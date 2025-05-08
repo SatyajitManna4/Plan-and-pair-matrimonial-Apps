@@ -1,0 +1,1250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/sagegreen">
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        tools:context=".BioActivity">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile Details."
+            android:textColor="@color/black"
+            android:textSize="40sp"
+            android:fontFamily="@font/hankengrotesk_variablefont_wght"
+            android:textStyle="bold"/>
+        <!-- Profile Image Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:src="@drawable/default_profile"
+                    android:background="@drawable/profile_icon"
+                    android:scaleType="centerCrop"
+                    android:clipToOutline="true"/>
+
+                <ImageView
+                    android:id="@+id/editProfileimg"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/baseline_add_circle_24"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/profile_icon"
+                    android:padding="3dp"
+                    android:clipToOutline="true"/>
+            </FrameLayout>
+            <!-- Name, Age, Religion Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <EditText
+                    android:id="@+id/gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Gender"
+                    android:textColorHint="#7C7946"
+                    android:textColor="#7C7946"
+                    android:background="@drawable/edit_text_bg"
+                    android:elevation="5dp"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:inputType="text"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Age"
+                    android:textColorHint="#7C7946"
+                    android:textColor="#7C7946"
+                    android:background="@drawable/edit_text_bg"
+                    android:elevation="5dp"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="number"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+                <EditText
+                    android:id="@+id/community"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:hint="Community"
+                    android:textColorHint="#7C7946"
+                    android:textColor="#7C7946"
+                    android:background="@drawable/edit_text_bg"
+                    android:elevation="5dp"
+                    android:padding="10dp"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    android:inputType="text"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Additional Bio Details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Birth Details : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <EditText
+                android:id="@+id/dobbirth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Date of birth (dd/mm/yyyy)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="date"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <EditText
+                android:id="@+id/timebirth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Time of birth (hh:mm:ss)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="time"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <EditText
+                android:id="@+id/placebirth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Place of birth"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <EditText
+                android:id="@+id/otherbirth"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Other birth details (if any)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Family Background : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:paddingTop="14dp"
+                android:textColor="#7C7946"
+                android:textStyle="bold"
+                android:textSize="17sp"/>
+
+            <EditText
+                android:id="@+id/father"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Father's name (optional)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="text"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+            <EditText
+                android:id="@+id/fatherocc"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Father's occupation(optional)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+            <EditText
+                android:id="@+id/mother"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Mother's name (optional)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+            <EditText
+                android:id="@+id/motherocc"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Mother's occupation(optional)"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Family Type :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="italic"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="8dp"
+                android:gravity="center_vertical"
+                android:weightSum="3">
+
+                <CheckBox
+                    android:id="@+id/familyTypeJoint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Joint"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+                <CheckBox
+                    android:id="@+id/familyTypeNuclear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Nuclear"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+                <CheckBox
+                    android:id="@+id/familyTypeExtended"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Extended"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profession and Income :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+            <!--Industry-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Industry :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="italic"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+            <GridLayout
+                android:id="@+id/industryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
+                <CheckBox
+                    android:id="@+id/it"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="IT"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/engineering"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Engineering"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/medical"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Medical"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/government"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Government"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/business"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Business"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/law"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Law"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/arts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Arts"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/finance"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Finance"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/education"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Education"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/aviation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Aviation"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/hospitality"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Hospitality"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/freelancer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Freelancer"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/marketing"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Marketing"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/realestate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Real Estate"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/studentIndustry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Student"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+            </GridLayout>
+            <EditText
+                android:id="@+id/otherindus"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Other"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <!--Designation-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Designation :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="italic"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+
+            <GridLayout
+                android:id="@+id/designationLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
+
+                <CheckBox
+                    android:id="@+id/engineer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Engineer"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/DA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Data Analyst"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/doc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Doctor"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/nurse"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Nurse"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/CA"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="CA"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/ias"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="IAS"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/ips"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="IPS"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/lawyer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Lawyer"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/teacher"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Teacher"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/writer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Writer"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/pilot"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Pilot"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/journalist"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Journalist"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/student"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Student"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/unemployed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Unemployed"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/Looking"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Looking for Job"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+            </GridLayout>
+
+            <EditText
+                android:id="@+id/otherdesig"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Other"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <!--Income-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Income :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="italic"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+
+            <GridLayout
+                android:id="@+id/incomeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
+
+                <CheckBox
+                    android:id="@+id/below1l"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Below Rs. 1L"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/onelto3l"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Rs. 1L - 3L"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/threelto5l"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Rs. 3L - 5L"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/fivelto10l"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Rs. 5L - 10L"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/tenlto25l"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Rs. 10L - 25L"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/twentyFivePlus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Rs.25L+"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Education Details :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/highestQual"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Highest qualification"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+            <EditText
+                android:id="@+id/degree"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Degree"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:layout_marginTop="8dp"
+                android:inputType="text"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Marriage Timeline :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+
+            <GridLayout
+                android:id="@+id/timelineLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="2"
+                android:orientation="horizontal"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
+
+                <CheckBox
+                    android:id="@+id/marriageImmediate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Immediately"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/marriageSixM"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Within 6 months"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/marriageWithinOneYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Within 1 year"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/marriageAfterOneYear"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="After 1 year"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+            </GridLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Languages Spoken :"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textColor="#7C7946"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_marginTop="16dp"/>
+
+            <GridLayout
+                android:id="@+id/langLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:columnCount="3"
+                android:orientation="horizontal"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="true">
+
+                <CheckBox
+                    android:id="@+id/hindi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Hindi"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/bengali"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Bengali"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                <CheckBox
+                    android:id="@+id/marathi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Marathi"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/tamil"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Tamil"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/gujrati"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Gujrati"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/urdu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Urdu"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/kannada"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Kannada"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/odia"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Odia"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/malayalam"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Malayalam"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/assamese"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="Assamese"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                <CheckBox
+                    android:id="@+id/english"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_button_selector"
+                    android:padding="10dp"
+                    android:gravity="center"
+                    android:text="English"
+                    android:textColor="@color/checkbox_text_color_selector"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+            </GridLayout>
+            <EditText
+                android:id="@+id/otherlang"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Other"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/edit_text_bg"
+                android:elevation="5dp"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:gravity="top"
+                android:inputType="text"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="end">
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/peach"
+                android:id="@+id/doneButton"
+                android:textSize="20sp"
+                android:text="Done"
+                android:textColor="@color/white"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

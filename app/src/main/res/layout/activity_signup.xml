@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:padding="20dp"
+    tools:context=".LoginActivity">
+
+    <!-- Centered LinearLayout for Login and Input Fields -->
+    <LinearLayout
+        android:id="@+id/login_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <!-- Signup Text -->
+        <TextView
+            android:id="@+id/signuptxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hankengrotesk_variablefont_wght"
+            android:text="Sign Up"
+            android:textColor="@color/orange"
+            android:textSize="55sp"
+            android:textStyle="bold" />
+
+        <!-- Name EditText -->
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:hint="Name"
+            android:textColorHint="#7C7946"
+            android:textColor="#7C7946"
+            android:background="@drawable/glass_edit_txt"
+            android:padding="10dp"
+            android:minHeight="48dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:layout_marginTop="20dp"
+            android:inputType="text"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:hint="Email"
+            android:textColorHint="#7C7946"
+            android:textColor="#7C7946"
+            android:background="@drawable/glass_edit_txt"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:layout_marginTop="10dp"
+            android:inputType="textEmailAddress"
+            />
+
+        <!-- Password EditText -->
+        <!-- Password Field with Eye Icon -->
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/glass_edit_txt"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:inputType="textPassword"/>
+
+            <ImageView
+                android:id="@+id/password_eye"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:src="@drawable/is_eye_off"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
+        <!-- Confirm Password Field with Eye Icon -->
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/confirmpassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Confirm Password"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/glass_edit_txt"
+                android:padding="10dp"
+                android:textSize="16sp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:inputType="textPassword"/>
+
+            <ImageView
+                android:id="@+id/confirmpassword_eye"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:src="@drawable/is_eye_off"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/contactNo"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:hint="Contact Number"
+            android:textColorHint="#7C7946"
+            android:textColor="#7C7946"
+            android:background="@drawable/glass_edit_txt"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:layout_marginTop="10dp"
+            android:inputType="phone"
+            />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/peach"
+            android:id="@+id/signup"
+            android:text="Sign Up"
+            android:textColor="@color/white"
+            android:layout_marginTop="15dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+    </LinearLayout>
+</RelativeLayout>

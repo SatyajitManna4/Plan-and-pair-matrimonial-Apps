@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_marginTop="20dp"
+        tools:context=".ProfileActivity">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Aman Jaiswal"
+            android:textColor="#AFAB38"
+            android:textSize="40sp"
+            android:fontFamily="@font/hankengrotesk_variablefont_wght"
+            android:textStyle="bold"/>
+
+        <!-- Profile Image Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical">
+
+            <!-- FrameLayout for Profile Image & Heart Icon -->
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/profile_icon"
+                    android:clipToOutline="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/sample_img2" />
+
+                <!-- Heart Button Positioned at Bottom-Right -->
+                <ImageView
+                    android:id="@+id/likeButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/baseline_favorite_border_24"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/profile_icon_view"
+                    android:padding="3dp"
+                    android:clipToOutline="true"/>
+
+            </FrameLayout>
+
+            <!-- Name, Age, Religion Section + Chat -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/userAge"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                    android:text="Age : 32"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/userName"
+                    android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                    android:text="Religion : Hindu"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"/>
+
+                <!-- Chat Section (Chat Icon + Chat Text) -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/chatSection"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:id="@+id/chatIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/baseline_chat_24"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:id="@+id/chatText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chat with\nAman"
+                        android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Additional Bio Details -->
+        <LinearLayout
+            style="@style/CardTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Community : "
+                android:textColor="@color/black"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Birth Details : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Family Background : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Profession and Income : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Education : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Willingness to relocate : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Marriage timeline : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Languages spoken : "
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your bond with Aman is this strong!"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:textStyle="italic"/>
+
+            <com.example.planpair.CompatibilityScoreView
+                android:layout_marginTop="16dp"
+                android:id="@+id/compatibilityView"
+                android:layout_width="200dp"
+                android:layout_height="200dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select Your Interests"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:paddingBottom="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Music Preferences Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Music Preferences"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_music_classical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Classical"
+                            android:layout_marginEnd="15dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_music_folk"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Folk" />
+
+                        <CheckBox
+                            android:id="@+id/check_music_pop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pop"
+                            android:layout_marginEnd="15dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_music_bim"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bollywood_indian" />
+
+                        <CheckBox
+                            android:id="@+id/check_music_hiphop"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:text="@string/hip_hop_rap" />
+
+                        <CheckBox
+                            android:id="@+id/check_music_dance"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/electronic_dance" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Movies Preferences Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/movies_tv_shows_preferences"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <GridLayout
+                        android:layout_width="334dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_movies_horror"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="Horror" />
+
+                        <CheckBox
+                            android:id="@+id/check_movies_detective"
+                            android:layout_width="158dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/crime_detective" />
+
+                        <CheckBox
+                            android:id="@+id/check_movies_comedy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="Comedy" />
+
+                        <CheckBox
+                            android:id="@+id/check_movies_action"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/action_adventure" />
+
+                        <CheckBox
+                            android:id="@+id/check_movies_realityshow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="Reality Shows" />
+
+                        <CheckBox
+                            android:id="@+id/check_movies_animation"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:text="Animated Shows" />
+                    </GridLayout>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Books Preferences Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Books Preferences"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_books_fiction"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fiction"
+                            android:layout_marginEnd="5dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_books_science"
+                            android:layout_width="186dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/science_technology" />
+
+                        <CheckBox
+                            android:id="@+id/check_books_fantasy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fantasy"
+                            android:layout_marginEnd="5dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_books_selfhelp"
+                            android:layout_width="159dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/self_improvement" />
+
+                        <CheckBox
+                            android:id="@+id/check_books_mystery"
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:text="@string/mystery_thriller" />
+
+                        <CheckBox
+                            android:id="@+id/check_books_biography"
+                            android:layout_width="122dp"
+                            android:layout_height="wrap_content"
+                            android:text="Biographies" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Food Preferences"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_food_veg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vegetarian "
+                            android:layout_marginEnd="10dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_food_nonveg"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="Non-Vegetarian" />
+
+                        <CheckBox
+                            android:id="@+id/check_food_pescatarian"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pescatarian"
+                            android:layout_marginEnd="10dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_food_sweet"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sweet Tooth" />
+
+                        <CheckBox
+                            android:id="@+id/check_food_homefood"
+                            android:layout_width="151dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="@string/traditional_cultural" />
+
+                        <CheckBox
+                            android:id="@+id/check_food_fastfood"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fast Food" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Travel Preferences"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_travel_hill"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Hill"
+                            android:layout_marginEnd="16dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_travel_beach"
+                            android:layout_width="186dp"
+                            android:layout_height="wrap_content"
+                            android:text="Sea Beach" />
+
+                        <CheckBox
+                            android:id="@+id/check_travel_desert"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Desert"
+                            android:layout_marginEnd="16dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_travel_forest"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Forest" />
+
+                        <CheckBox
+                            android:id="@+id/check_travel_historical_place"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="Historical places" />
+
+                        <CheckBox
+                            android:id="@+id/check_travel_island"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Island" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

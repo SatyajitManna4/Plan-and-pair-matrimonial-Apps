@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Plan &amp; Pair</string>
+    <string name="plan_pair"><![CDATA[Plan & Pair]]></string>
+    <string name="relationship_family_preferences"><![CDATA[Relationship & Family Preferences]]></string>
+    <string name="hobbies_daily_lifestyle"><![CDATA[Hobbies & Daily Lifestyle]]></string>
+    <string name="personal_interests_passions"><![CDATA[Personal Interests & passions]]></string>
+    <string name="religious_cultural_identity"><![CDATA[Religious & Cultural Identity]]></string>
+    <string name="communication_social_preferences"><![CDATA[Communication & Social Preferences]]></string>
+    <string name="bollywood_indian"><![CDATA[Bollywood & Indian]]></string>
+    <string name="hip_hop_rap"><![CDATA[Hip-Hop & Rap]]></string>
+    <string name="electronic_dance"><![CDATA[Electronic & Dance]]></string>
+    <string name="movies_tv_shows_preferences"><![CDATA[Movies & TV Shows Preferences]]></string>
+    <string name="crime_detective"><![CDATA[Crime & Detective]]></string>
+    <string name="action_adventure"><![CDATA[Action & Adventure]]></string>
+    <string name="mystery_thriller"><![CDATA[Mystery & Thriller]]></string>
+    <string name="self_improvement"><![CDATA[Self improvement]]></string>
+    <string name="science_technology"><![CDATA[Science & Technology]]></string>
+    <string name="traditional_cultural"><![CDATA[Traditional & Cultural]]></string>
+    <string name="art_design"><![CDATA[Art & Design]]></string>
+    <string name="writing_blogging"><![CDATA[Writing & Blogging]]></string>
+    <string name="knowledge_learning"><![CDATA[Knowledge & Learning]]></string>
+    <string name="history_culture"><![CDATA[History & culture]]></string>
+    <string name="philosophy_psychology"><![CDATA[Philosophy & Psychology]]></string>
+    <string name="diy_handicrafts"><![CDATA[DIY & Handicrafts]]></string>
+    <string name="social_community_involvement"><![CDATA[Social & Community Involvement]]></string>
+    <string name="volunteering_charity_work"><![CDATA[Volunteering & Charity Work]]></string>
+    <string name="environmental_sustainability_causes"><![CDATA[Environmental & Sustainability Causes]]></string>
+    <string name="public_speaking_leadership"><![CDATA[Public Speaking & Leadership]]></string>
+    <string name="cultural_religious_community_work"><![CDATA[Cultural & Religious Community Work]]></string>
+    <string name="adventure_travel"><![CDATA[Adventure & Travel]]></string>
+    <string name="gaming_entertainment"><![CDATA[Gaming & Entertainment]]></string>
+    <string name="radio_talk_shows"><![CDATA[Radio & talk shows]]></string>
+    <string name="fashion_styling"><![CDATA[Fashion & Styling]]></string>
+    <string name="meditation_yoga"><![CDATA[Meditation & Yoga]]></string>
+    <string name="cultural_ethnic_background"><![CDATA[Cultural & Ethnic Background]]></string>
+    <string name="religious_cultural_preferences"><![CDATA[Religious & Cultural Preferences]]></string>
+    <string name="save_continue"><![CDATA[Save & Continue]]></string>
+    <!-- Preferred Season -->
+    <string-array name="season_array">
+        <item>Winter</item>
+        <item>Spring</item>
+        <item>Summer</item>
+        <item>Autumn</item>
+    </string-array>
+
+    <!-- Theme & Aesthetic -->
+    <string-array name="theme_array">
+        <item>Classic</item>
+        <item>Bohemian</item>
+        <item>Modern</item>
+        <item>Rustic</item>
+    </string-array>
+
+    <!-- Wedding Color Palette -->
+    <string-array name="color_palette_array">
+        <item>Pastel</item>
+        <item>Bold</item>
+        <item>Neutral</item>
+        <item>Bright</item>
+    </string-array>
+
+    <!-- Wedding Attire -->
+    <string-array name="attire_array">
+        <item>Traditional</item>
+        <item>Modern</item>
+        <item>Casual</item>
+        <item>Formal</item>
+    </string-array>
+    <!--</string-array>-->
+
+    <!-- Other strings -->
+    <string name="pick_a_wedding_theme_vibe">Pick a wedding theme/vibe</string>
+</resources>

@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Express Yourself!"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select the activities that define you and help us find like-minded matches!"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:paddingBottom="10dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Creative Interests"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_art_design"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/art_design"
+                            android:layout_marginEnd="15dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_write_blog"
+                            android:layout_width="128dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/writing_blogging" />
+
+                        <CheckBox
+                            android:id="@+id/check_music"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Music"
+                            android:layout_marginEnd="15dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_dance"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="Dance" />
+
+                        <CheckBox
+                            android:id="@+id/check_photography"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="15dp"
+                            android:text="Photography" />
+
+                        <CheckBox
+                            android:id="@+id/check_acting"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="Acting" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/knowledge_learning"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <GridLayout
+                        android:layout_width="334dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_reading"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="Reading" />
+
+                        <CheckBox
+                            android:id="@+id/check_technology"
+                            android:layout_width="158dp"
+                            android:layout_height="wrap_content"
+                            android:text="Technology" />
+
+                        <CheckBox
+                            android:id="@+id/check_history"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/history_culture" />
+
+                        <CheckBox
+                            android:id="@+id/check_philosophy"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/philosophy_psychology" />
+
+                        <CheckBox
+                            android:id="@+id/check_diy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/diy_handicrafts" />
+
+                        <CheckBox
+                            android:id="@+id/check_motivation_Learning"
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:text="Motivational Learning" />
+                    </GridLayout>
+
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Books Preferences Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/social_community_involvement"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="346dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_social_charitywork"
+                            android:layout_width="135dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:text="@string/volunteering_charity_work" />
+
+                        <CheckBox
+                            android:id="@+id/check_social_environment"
+                            android:layout_width="139dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/environmental_sustainability_causes" />
+
+                        <CheckBox
+                            android:id="@+id/check_social_leadership"
+                            android:layout_width="132dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="7dp"
+                            android:text="@string/public_speaking_leadership" />
+
+                        <CheckBox
+                            android:id="@+id/check_social_religious"
+                            android:layout_width="131dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/cultural_religious_community_work" />
+
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/adventure_travel"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_traveling"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Traveling "
+                            android:layout_marginEnd="10dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_trekking"
+                            android:layout_width="165dp"
+                            android:layout_height="wrap_content"
+                            android:text="Trekking" />
+
+                        <CheckBox
+                            android:id="@+id/check_skydriving"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Skydiving"
+                            android:layout_marginEnd="10dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_road_trips"
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:text="Road Trips" />
+
+                        <CheckBox
+                            android:id="@+id/check_food_exploration"
+                            android:layout_width="116dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="10dp"
+                            android:text="Food Exploration" />
+
+                        <CheckBox
+                            android:id="@+id/check_cultural_exploration"
+                            android:layout_width="145dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cultural Exploration" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gaming_entertainment"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_video_game"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Video Games"
+                            android:layout_marginEnd="16dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_esports"
+                            android:layout_width="186dp"
+                            android:layout_height="wrap_content"
+                            android:text="eSports" />
+
+                        <CheckBox
+                            android:id="@+id/check_board_games"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Board Games"
+                            android:layout_marginEnd="16dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_podcast"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Podcast Listening" />
+
+                        <CheckBox
+                            android:id="@+id/check_radio_shows"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:text="@string/radio_talk_shows" />
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="6dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Creative Passion"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+
+                    <GridLayout
+                        android:layout_width="363dp"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:padding="10dp"
+                        android:rowCount="3">
+
+                        <CheckBox
+                            android:id="@+id/check_gardening"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gardening"
+                            android:layout_marginEnd="12dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_cooking"
+                            android:layout_width="144dp"
+                            android:layout_height="wrap_content"
+                            android:text="Cooking" />
+
+                        <CheckBox
+                            android:id="@+id/check_baking"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Baking"
+                            android:layout_marginEnd="12dp"/>
+
+                        <CheckBox
+                            android:id="@+id/check_fashion"
+                            android:layout_width="126dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fashion_styling" />
+
+                        <CheckBox
+                            android:id="@+id/check_yoga"
+                            android:layout_width="127dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="12dp"
+                            android:text="@string/meditation_yoga" />
+
+                    </GridLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

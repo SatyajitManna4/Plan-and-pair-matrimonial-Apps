@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/religious_cultural_preferences"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Help us find a match that aligns with your beliefs and values."
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:paddingBottom="8dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Your Religion"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"/>
+
+            <RadioGroup
+                android:id="@+id/religionGroup"
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/religion_hindu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hindu 🕉️" />
+
+                <RadioButton
+                    android:id="@+id/religion_islam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Islam ☪️" />
+
+                <RadioButton
+                    android:id="@+id/religion_christian"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Christian ✝️" />
+
+                <RadioButton
+                    android:id="@+id/religion_buddhism"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buddhism ☸️" />
+
+                <RadioButton
+                    android:id="@+id/religion_jainism"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jainism 🏵️" />
+
+                <RadioButton
+                    android:id="@+id/religion_sikhism"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sikhism ☬" />
+            </RadioGroup>
+
+            <!-- Sect/Denomination Dropdown -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Denomination/Sect (Optional)"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="Select Your Sect">
+
+                <AutoCompleteTextView
+                    android:id="@+id/sectDropdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:inputType="none"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Cultural Background Selection -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cultural_ethnic_background"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingTop="12dp"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/culturalChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBengali"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bengali"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPunjabi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Punjabi"
+                    android:checkable="true"
+                    android:textColor="@color/black"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipGujarati"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gujarati"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipOthers"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Others"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <EditText
+                android:id="@+id/otherCulturalBackground"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter your cultural background"
+                android:textColorHint="@color/black"
+                android:visibility="gone"
+                android:padding="8dp"
+                android:background="@android:drawable/edit_text"
+                android:textColor="@android:color/black"/>
+
+            <!-- Traditional vs Modern Preferences -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Traditional vs. Modern Beliefs"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"/>
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/traditionalModernSlider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="10"
+                android:value="5"
+                app:labelBehavior="gone"/>
+
+            <!-- Festivals & Celebrations -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Favorite Festivals"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingTop="8dp"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/festivalChipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDurgapuja"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Durga Puja 🏵️"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipDiwali"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diwali  🪔"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipHoli"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Holi 🎨"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEid"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Eid  🕌"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipX_mas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Christmas 🎄"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipGuruNanakJayanti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guru Nanak Jayanti ☬"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBuddhaPurnima"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Buddha Purnima ☸️"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMahavirJayanti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mahavir Jayanti 🏵️"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPongal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pongal 🌾"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipOnam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Onam 🌸"
+                    android:textColor="@color/black"
+                    android:checkable="true"
+                    app:chipBackgroundColor="@color/chip_selector"
+                    app:chipStrokeColor="@color/black"
+                    app:chipStrokeWidth="2dp"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Intercaste/Interfaith Marriage Toggle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Open to Intercaste/Interfaith Marriage?"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingTop="10dp"/>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/intercasteSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yes, I'm Open"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/save_continue"
+                android:layout_marginTop="16dp"
+                style="@style/Widget.MaterialComponents.Button"/>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

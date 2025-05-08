@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:padding="20dp"
+    tools:context=".LoginActivity">
+
+    <!-- Centered LinearLayout for Login and Input Fields -->
+    <LinearLayout
+        android:id="@+id/login_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_centerInParent="true">
+
+        <!-- Login Text -->
+        <TextView
+            android:id="@+id/logintxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/hankengrotesk_variablefont_wght"
+            android:text="Login"
+            android:textColor="@color/orange"
+            android:textSize="55sp"
+            android:textStyle="bold" />
+
+        <!-- Name EditText -->
+        <EditText
+            android:id="@+id/emailName"
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:hint="Email Name"
+            android:textColorHint="#7C7946"
+            android:textColor="#7C7946"
+            android:background="@drawable/glass_edit_txt"
+            android:padding="10dp"
+            android:textSize="17sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:layout_marginTop="20dp"
+            android:inputType="text"/>
+
+        <!-- Password EditText -->
+        <RelativeLayout
+            android:layout_width="280dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:textColorHint="#7C7946"
+                android:textColor="#7C7946"
+                android:background="@drawable/glass_edit_txt"
+                android:padding="10dp"
+                android:textSize="17sp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                android:inputType="textWebPassword"/>
+
+            <ImageView
+                android:id="@+id/password_eye_login"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="5dp"
+                android:src="@drawable/is_eye_off"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/forgot_password"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:text="Forgot Password?"
+            android:textColor="@color/peach"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:layout_marginTop="20dp"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/peach"
+            android:id="@+id/login"
+            android:text="Login"
+            android:textColor="@color/white"
+            android:layout_marginTop="17dp"
+            android:textSize="20sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
+    </LinearLayout>
+
+    <!-- Fixed Position for "Not yet registered?" Text at the Bottom -->
+    <TextView
+        android:id="@+id/signup_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:text="Not yet registered?\nSign Up now"
+        android:textColor="@color/peach"
+        android:textSize="15sp"
+        android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+</RelativeLayout>

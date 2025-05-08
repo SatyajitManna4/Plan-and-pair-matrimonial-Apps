@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="rosebud">#FEA5A8</color>
+    <color name="orange">#F38D2E</color>
+    <color name="peach">#EC5E5B</color>
+    <color name="babyorange">#FDC176</color>
+    <color name="sagegreen">#C6C272</color>
+    <color name="yellow">#FFF06C</color>
+    <color name="black_transparent">#80000000</color> <!-- 50% transparent black -->
+</resources>
