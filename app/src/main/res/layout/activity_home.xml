@@ -10,11 +10,11 @@
     tools:context=".HomeActivity">
 
     <TextView
-        android:id="@+id/welcomeText"
+        android:id="@+id/welCurrentUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/peach"
-        android:text="Welcome, Neha"
+        android:text="Welcome,"
         android:fontFamily="@font/hankengrotesk_variablefont_wght"
         android:textSize="40sp"
         android:textStyle="bold"
@@ -29,7 +29,7 @@
         android:layout_height="0dp"
         android:background="@color/black_transparent"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText"
+        app:layout_constraintTop_toBottomOf="@id/welCurrentUserName"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -41,7 +41,7 @@
         android:layout_height="0dp"
         android:nestedScrollingEnabled="false"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@id/welcomeText"
+        app:layout_constraintTop_toBottomOf="@id/welCurrentUserName"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
