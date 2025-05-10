@@ -36,8 +36,8 @@
                     android:id="@+id/profileImageView"
                     android:layout_width="180dp"
                     android:layout_height="180dp"
-                    android:src="@drawable/default_profile"
                     android:background="@drawable/profile_icon"
+                    android:src="@drawable/default_profile"
                     android:scaleType="centerCrop"
                     android:clipToOutline="true"/>
 

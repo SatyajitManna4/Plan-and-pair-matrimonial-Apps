@@ -1,9 +1,5 @@
 package com.example.planpair;
 
-import android.util.Log;
-
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
@@ -14,74 +10,26 @@ import java.util.Map;
 
 public class CompatibilityCalculator {
 
-    private static final String TAG = "CompatibilityCalc";
-    private static FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private static FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+    private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public interface CompatibilityCallback {
-        void onComplete();
-    }
-
-    public static void calculateAndStoreCompatibilityScores(CompatibilityCallback callback) {
-        db = FirebaseFirestore.getInstance();
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (currentUser == null) {
-            Log.e(TAG, "No current user logged in");
-            callback.onComplete();
-            return;
-        }
-
-        String currentUid = currentUser.getUid();
-
+    public static int calculateAndStoreCompatibility(String currentUid, String otherUid) {
         db.collection("UsersData").document(currentUid).get().addOnSuccessListener(currentSnapshot -> {
-            if (!currentSnapshot.exists()) {
-                Log.e(TAG, "Current user profile not found in Firestore");
-                callback.onComplete();
-                return;
-            }
+            db.collection("UsersData").document(otherUid).get().addOnSuccessListener(otherSnapshot -> {
+                if (!currentSnapshot.exists() || !otherSnapshot.exists()) return;
 
-            UserProfile currentProfile = currentSnapshot.toObject(UserProfile.class);
-            if (currentProfile == null) {
-                Log.e(TAG, "Failed to parse current user profile");
-                callback.onComplete();
-                return;
-            }
-
-            currentProfile.setUid(currentUid);
-
-            db.collection("UsersData").get().addOnSuccessListener(querySnapshot -> {
-                for (DocumentSnapshot doc : querySnapshot) {
-                    String otherUid = doc.getId();
-                    if (otherUid.equals(currentUid)) continue;
-
-                    UserProfile otherProfile = doc.toObject(UserProfile.class);
-                    if (otherProfile == null) continue;
-
-                    otherProfile.setUid(otherUid);
-
-                    int score = computeCompatibility(currentProfile, otherProfile);
-                    storeCompatibilityScore(currentUid, otherUid, score);
-                }
-                Log.d(TAG, "All compatibility scores calculated and saved.");
-                callback.onComplete();
-            }).addOnFailureListener(e -> {
-                Log.e(TAG, "Error fetching all user profiles", e);
-                callback.onComplete();
+                int score = computeCompatibility(currentSnapshot, otherSnapshot);
+                storeCompatibilityScore(currentUid, otherUid, score);
             });
-
-        }).addOnFailureListener(e -> {
-            Log.e(TAG, "Error fetching current user profile", e);
-            callback.onComplete();
         });
+        return 0;
     }
 
-    public static int computeCompatibility(UserProfile user1, UserProfile user2) {
+    private static int computeCompatibility(DocumentSnapshot user1, DocumentSnapshot user2) {
         int score = 0;
         int totalFactors = 0;
 
-        String gender1 = user1.getGender();
-        String gender2 = user2.getGender();
+        String gender1 = user1.getString("gender");
+        String gender2 = user2.getString("gender");
         if (gender1 == null || gender2 == null) return 0;
 
         if (!(
@@ -91,23 +39,21 @@ public class CompatibilityCalculator {
             return 0;
         }
 
-        score += compareMultiValue(user1.getTravel(), user2.getTravel()); totalFactors++;
-        score += compareMultiValue(user1.getCreative_passions(), user2.getCreative_passions()); totalFactors++;
-        score += compareMultiValue(user1.getMovies(), user2.getMovies()); totalFactors++;
-        score += compareMultiValue(user1.getMusic(), user2.getMusic()); totalFactors++;
-        score += compareMultiValue(user1.getMarriage(), user2.getMarriage()); totalFactors++;
-        score += compareMultiValue(user1.getLanguage(), user2.getLanguage()); totalFactors++;
-        score += compareMultiValue(user1.getFood(), user2.getFood()); totalFactors++;
-        score += compareMultiValue(user1.getFamily_structure(), user2.getFamily_structure()); totalFactors++;
-        score += compareMultiValue(user1.getFamilyType(), user2.getFamilyType()); totalFactors++;
-        score += compareMultiValue(user1.getWeddingType(), user2.getWeddingType()); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("travel"), (List<String>) user2.get("travel")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("creative_passions"), (List<String>) user2.get("creative_passions")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("movies"), (List<String>) user2.get("movies")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("music"), (List<String>) user2.get("music")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("marriage"), (List<String>) user2.get("marriage")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("language"), (List<String>) user2.get("language")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("food"), (List<String>) user2.get("food")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("family_structure"), (List<String>) user2.get("family_structure")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("familyType"), (List<String>) user2.get("familyType")); totalFactors++;
+        score += compareMultiValue((List<String>) user1.get("weddingType"), (List<String>) user2.get("weddingType")); totalFactors++;
 
-        score += compareSingleValue(user1.getSocial_media(), user2.getSocial_media()); totalFactors++;
-        score += compareSingleValue(user1.getReligion(), user2.getReligion()); totalFactors++;
-        score += compareSingleValue(user1.getDegree(), user2.getDegree()); totalFactors++;
-        score += compareSingleValue(user1.getSeason(), user2.getSeason()); totalFactors++;
-
-        if (totalFactors == 0) return 0;
+        score += compareSingleValue(user1.getString("social_media"), user2.getString("social_media")); totalFactors++;
+        score += compareSingleValue(user1.getString("religion"), user2.getString("religion")); totalFactors++;
+        score += compareSingleValue(user1.getString("degree"), user2.getString("degree")); totalFactors++;
+        score += compareSingleValue(user1.getString("season"), user2.getString("season")); totalFactors++;
 
         return (int) ((score / (float) totalFactors) * 100);
     }
@@ -131,18 +77,16 @@ public class CompatibilityCalculator {
     private static void storeCompatibilityScore(String currentUid, String otherUid, int score) {
         Map<String, Object> data = new HashMap<>();
         data.put("score", score);
-        data.put("comparedWith", currentUid);
+        data.put("comparedWith", otherUid);
+        data.put("timestamp", System.currentTimeMillis());
 
         db.collection("UsersData")
-                .document(otherUid)
-                .collection("compatibilityScores")
                 .document(currentUid)
-                .set(data, SetOptions.merge())
-                .addOnSuccessListener(aVoid -> Log.d(TAG, "Saved compatibility score between " + currentUid + " and " + otherUid))
-                .addOnFailureListener(e -> Log.e(TAG, "Failed to save compatibility score", e));
+                .collection("compatibilityScores")
+                .document(otherUid)
+                .set(data, SetOptions.merge());
     }
 }
-
 
 /*
 

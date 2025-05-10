@@ -1,34 +1,6 @@
 /*
 package com.example.planpair;
 
-import android.os.Bundle;
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-public class ProfileActivity extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_profile);
-
-        // Initialize CompatibilityScoreView
-        CompatibilityScoreView compatibilityView = findViewById(R.id.compatibilityView);
-        if (compatibilityView != null) {
-            compatibilityView.setCompatibilityScore(85); // Example score
-            compatibilityView.invalidate();
-            compatibilityView.requestLayout();
-
-        }
-    }
-}
-
-package com.example.planpair;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -89,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
 }
 */
 
-//Compatibility score algo
+//Compatibility score calling from compatibilityCalculator.java file
 
 package com.example.planpair;
 
@@ -111,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
     private boolean isLiked = false;
     private ImageView likeButton;
     private LinearLayout chatSection;
-    private UserProfile currentUser;
+    private String currentUser;
     private String otherUserId;
     private FirebaseFirestore db;
     private FirebaseUser firebaseUser;
@@ -137,15 +109,15 @@ public class ProfileActivity extends AppCompatActivity {
 
         db.collection("UsersData").document(currentUserId).get().addOnSuccessListener(currentSnapshot -> {
             if (currentSnapshot.exists()) {
-                currentUser = currentSnapshot.toObject(UserProfile.class);
-                currentUser.setUid(currentUserId);
+                currentUser = String.valueOf(currentSnapshot.toObject(UserProfile.class));
+                currentUser.strip();
 
                 db.collection("UsersData").document(otherUserId).get().addOnSuccessListener(otherSnapshot -> {
                     if (otherSnapshot.exists()) {
                         UserProfile otherUser = otherSnapshot.toObject(UserProfile.class);
                         otherUser.setUid(otherUserId);
 
-                        int score = CompatibilityCalculator.computeCompatibility(currentUser, otherUser);
+                        int score = CompatibilityCalculator.calculateAndStoreCompatibility(currentUser, String.valueOf(otherUser));
                         if (compatibilityView != null) {
                             compatibilityView.setCompatibilityScore(score);
                             compatibilityView.invalidate();
