@@ -1,3 +1,4 @@
+/*
 package com.example.planpair;
 
 import java.util.List;
@@ -94,3 +95,162 @@ public class UserProfile {
     public void setProfileImageUrl(String profileImageUrl) { this.profileImageUrl = profileImageUrl; }
 }
 
+*/
+// satyajit 1.00
+package com.example.planpair;
+import java.util.List;
+
+public class UserProfile {
+
+    private String uid;
+
+    private List<String> travel;
+    private List<String> creative_passions;
+    private List<String> movies;
+    private List<String> music;
+    private List<String> marriage;
+    private List<String> language;
+    private List<String> food;
+    private List<String> family_structure;
+    private List<String> familyType;
+    private List<String> WeddingType;
+
+    private String social_media;
+    private String religion;
+    private String degree;
+    private String Season;
+    private String gender;
+
+    // Required empty constructor for Firestore
+    public UserProfile() {
+    }
+
+    // UID (optional, not stored in Firestore document by default)
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public List<String> getTravel() {
+        return travel;
+    }
+
+    public void setTravel(List<String> travel) {
+        this.travel = travel;
+    }
+
+    public List<String> getCreative_passions() {
+        return creative_passions;
+    }
+
+    public void setCreative_passions(List<String> creative_passions) {
+        this.creative_passions = creative_passions;
+    }
+
+    public List<String> getMovies() {
+        return movies;
+    }
+
+    public void setMovies(List<String> movies) {
+        this.movies = movies;
+    }
+
+    public List<String> getMusic() {
+        return music;
+    }
+
+    public void setMusic(List<String> music) {
+        this.music = music;
+    }
+
+    public List<String> getMarriage() {
+        return marriage;
+    }
+
+    public void setMarriage(List<String> marriage) {
+        this.marriage = marriage;
+    }
+
+    public List<String> getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(List<String> language) {
+        this.language = language;
+    }
+
+    public List<String> getFood() {
+        return food;
+    }
+
+    public void setFood(List<String> food) {
+        this.food = food;
+    }
+
+    public List<String> getFamily_structure() {
+        return family_structure;
+    }
+
+    public void setFamily_structure(List<String> family_structure) {
+        this.family_structure = family_structure;
+    }
+
+    public List<String> getFamilyType() {
+        return familyType;
+    }
+
+    public void setFamilyType(List<String> familyType) {
+        this.familyType = familyType;
+    }
+
+    public List<String> getWeddingType() {
+        return WeddingType;
+    }
+
+    public void setWeddingType(List<String> weddingType) {
+        this.WeddingType = weddingType;
+    }
+
+    public String getSocial_media() {
+        return social_media;
+    }
+
+    public void setSocial_media(String social_media) {
+        this.social_media = social_media;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public String getSeason() {
+        return Season;
+    }
+
+    public void setSeason(String season) {
+        this.Season = season;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+}

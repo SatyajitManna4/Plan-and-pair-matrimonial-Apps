@@ -90,6 +90,7 @@ public class ProfileActivity extends AppCompatActivity {
 */
 
 //Compatibility score algo
+
 package com.example.planpair;
 
 import android.content.Intent;
@@ -102,15 +103,19 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ProfileActivity extends AppCompatActivity {
-    private boolean isLiked = false; // Track like status
+    private boolean isLiked = false;
     private ImageView likeButton;
     private LinearLayout chatSection;
-    private UserProfile currentUser;  // Define a variable to hold the current user profile
-    private String otherUserId;  // Variable to hold the other user ID
+    private UserProfile currentUser;
+    private String otherUserId;
+    private FirebaseFirestore db;
+    private FirebaseUser firebaseUser;
+    private CompatibilityScoreView compatibilityView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,58 +123,48 @@ public class ProfileActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile);
 
-        // Retrieve the other user's ID passed via the Intent
         otherUserId = getIntent().getStringExtra("otherUserId");
+        db = FirebaseFirestore.getInstance();
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        // Initialize UI components
-        CompatibilityScoreView compatibilityView = findViewById(R.id.compatibilityView);
-        likeButton = findViewById(R.id.likeButton); // Heart icon as like button
-        chatSection = findViewById(R.id.chatSection); // Chat section layout
+        likeButton = findViewById(R.id.likeButton);
+        chatSection = findViewById(R.id.chatSection);
+        compatibilityView = findViewById(R.id.compatibilityView);
 
-        // Get the current logged-in user ID
-        String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        if (firebaseUser == null || otherUserId == null) return;
 
-        // Get the reference to the current user profile in Firebase
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("UsersData").child(currentUserId);
+        String currentUserId = firebaseUser.getUid();
 
-        // Fetch current user's profile data
-        userRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                // Retrieve the current user data and map it to the UserProfile object
-                currentUser = task.getResult().getValue(UserProfile.class);
+        db.collection("UsersData").document(currentUserId).get().addOnSuccessListener(currentSnapshot -> {
+            if (currentSnapshot.exists()) {
+                currentUser = currentSnapshot.toObject(UserProfile.class);
+                currentUser.setUid(currentUserId);
 
-                // Fetch the other user's profile dynamically using the otherUserId
-                DatabaseReference otherUserRef = FirebaseDatabase.getInstance().getReference("UsersData").child(otherUserId);
+                db.collection("UsersData").document(otherUserId).get().addOnSuccessListener(otherSnapshot -> {
+                    if (otherSnapshot.exists()) {
+                        UserProfile otherUser = otherSnapshot.toObject(UserProfile.class);
+                        otherUser.setUid(otherUserId);
 
-                otherUserRef.get().addOnCompleteListener(otherTask -> {
-                    if (otherTask.isSuccessful()) {
-                        UserProfile otherUser = otherTask.getResult().getValue(UserProfile.class);
-
-                        // Calculate compatibility score between currentUser and otherUser
-                        double compatibilityScore = CompatibilityCalculator.calculateCompatibility(currentUser, otherUser);
-
-                        // Set the score to the CompatibilityScoreView
+                        int score = CompatibilityCalculator.computeCompatibility(currentUser, otherUser);
                         if (compatibilityView != null) {
-                            compatibilityView.setCompatibilityScore((float) compatibilityScore);  // Convert to float if needed
+                            compatibilityView.setCompatibilityScore(score);
                             compatibilityView.invalidate();
                             compatibilityView.requestLayout();
                         }
+
                     }
                 });
             }
         });
 
-        // Set initial chat section visibility
         chatSection.setVisibility(View.GONE);
 
-        // Like button functionality
         likeButton.setOnClickListener(v -> {
-            isLiked = !isLiked; // Toggle like status
+            isLiked = !isLiked;
             updateLikeButton();
         });
 
-        // Chat button click listener
-        findViewById(R.id.chatSection).setOnClickListener(v -> {
+        chatSection.setOnClickListener(v -> {
             if (isLiked) {
                 startActivity(new Intent(ProfileActivity.this, ChatActivity.class));
             }
@@ -178,11 +173,11 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void updateLikeButton() {
         if (isLiked) {
-            likeButton.setImageResource(R.drawable.baseline_favorite_24); // Filled heart
-            chatSection.setVisibility(View.VISIBLE); // Show chat section
+            likeButton.setImageResource(R.drawable.baseline_favorite_24); // Filled heart icon
+            chatSection.setVisibility(View.VISIBLE);
         } else {
-            likeButton.setImageResource(R.drawable.baseline_favorite_border_24); // Outline heart
-            chatSection.setVisibility(View.GONE); // Hide chat section
+            likeButton.setImageResource(R.drawable.baseline_favorite_border_24); // Outline heart icon
+            chatSection.setVisibility(View.GONE);
         }
     }
 }
