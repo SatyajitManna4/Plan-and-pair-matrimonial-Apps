@@ -1,3 +1,4 @@
+/*
 
 package com.example.planpair;
 
@@ -138,74 +139,74 @@ public class HomeActivity extends AppCompatActivity {
 }
 
 
+*/
 
 //satya
-/*
-
 package com.example.planpair;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.planpair.adapters.UserAdapter;
 import com.example.planpair.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity {
+    private static final String TAG = "HomeActivity";
     private boolean doubleBackPressed = false;
-    private RecyclerView recyclerView;
     private FrameLayout blurOverlay;
+    private TextView welCurrentUserName;
+    private RecyclerView recyclerView;
     private Button getPremium;
-    private boolean isPremium = false;
-    private FirebaseFirestore db;
-    private FirebaseUser currentUser;
+    private Boolean premium = false;
+    private FirebaseFirestore firestore;
+    private boolean isCurrentUserPremium = false;
+    private List<User> userList;
+    private UserAdapter userAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.white));
-        }
-
-        recyclerView = findViewById(R.id.recyclerView);
+        welCurrentUserName = findViewById(R.id.welCurrentUserName);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
         blurOverlay = findViewById(R.id.blurOverlay);
+        recyclerView = findViewById(R.id.recyclerView);
         getPremium = findViewById(R.id.getPremium);
 
-        db = FirebaseFirestore.getInstance();
-        currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        if (currentUser != null) {
-            fetchPremiumStatusAndLoadUsers();
-        }
+        firestore = FirebaseFirestore.getInstance();
+        userList = new ArrayList<>();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         getPremium.setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, PaymentActivity.class));
+            Intent intent = new Intent(HomeActivity.this, PaymentActivity.class);
+            startActivity(intent);
         });
 
+        loadCurrentUserProfile(); // Fetch username + premium
+
+        // Bottom nav clicks
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.nav_notif) {
@@ -222,67 +223,101 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchPremiumStatusAndLoadUsers() {
-        db.collection("UsersData")
-                .document(currentUser.getUid())
+    private void loadCurrentUserProfile() {
+        String currentUid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
+
+        firestore.collection("UsersData")
+                .document(currentUid)
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
-                        Boolean premium = documentSnapshot.getBoolean("isPremium");
-                        isPremium = premium != null && premium;
-                        applyBlurEffect();
-                        loadUsers(); // Load users only after premium status is known
-                    } else {
-                        isPremium = false;
-                        applyBlurEffect();
-                        loadUsers();
+                        String name = documentSnapshot.getString("username");
+                        premium = documentSnapshot.getBoolean("isPremium");
+
+                        if (name != null) {
+                            welCurrentUserName.setText(name);
+                        }
+
+                        isCurrentUserPremium = premium != null && premium;
                     }
+
+                    applyBlurEffect(); // Move inside after premium is fetched
+                    loadUsersFromFirestore();
                 })
                 .addOnFailureListener(e -> {
-                    isPremium = false;
-                    applyBlurEffect();
-                    loadUsers();
-                    Toast.makeText(this, "Failed to fetch premium status", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Error fetching user data", e);
+                    Toast.makeText(this, "Failed to load user profile", Toast.LENGTH_SHORT).show();
+                    applyBlurEffect(); // Still apply default blur
+                    loadUsersFromFirestore(); // still try loading users
                 });
     }
 
-    private void loadUsers() {
-        CollectionReference usersRef = db.collection("UsersData");
+    private void loadUsersFromFirestore() {
+        String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        usersRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                List<User> userList = new ArrayList<>();
-                for (QueryDocumentSnapshot document : task.getResult()) {
-                    String name = document.getString("username");
-                    Long ageLong = document.getLong("age");
-                    Long compatibilityLong = document.getLong("compatibility");
-                    String imageUrl = document.getString("profileImageUrl");
+        if (currentUid == null) {
+            Log.e(TAG, "Current user UID is null.");
+            return;
+        }
 
-                    if (name != null && ageLong != null && compatibilityLong != null && imageUrl != null) {
-                        int age = ageLong.intValue();
-                        int compatibility = compatibilityLong.intValue();
-                        userList.add(new User(name, age, compatibility, imageUrl));
+        firestore.collection("UsersData")
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    userList.clear();
+
+                    for (DocumentSnapshot doc : querySnapshot) {
+                        if (doc.getId().equals(currentUid)) continue;
+
+                        String name = doc.getString("username");
+                        Object ageObj = doc.get("age");
+                        Object compatibilityObj = doc.get("compatibility");
+                        String profileImageUrl = doc.getString("profileImageUrl");
+                        Boolean isPremium = doc.getBoolean("isPremium");
+
+                        int age = 0;
+                        if (ageObj instanceof Long) {
+                            age = ((Long) ageObj).intValue();
+                        } else if (ageObj instanceof String) {
+                            try {
+                                age = Integer.parseInt((String) ageObj);
+                            } catch (NumberFormatException e) {
+                                Log.e(TAG, "Invalid age format for user: " + doc.getId());
+                            }
+                        }
+
+                        int compatibility = 0;
+                        if (compatibilityObj instanceof Long) {
+                            compatibility = ((Long) compatibilityObj).intValue();
+                        }
+
+                        if (name == null || profileImageUrl == null) {
+                            Log.e(TAG, "Invalid user data: " + doc.getId());
+                            continue;
+                        }
+
+                        User user = new User(name, age, compatibility, profileImageUrl, isPremium != null && isPremium);
+                        userList.add(user);
                     }
-                }
 
-                UserAdapter adapter = new UserAdapter(this, userList, isPremium, user -> {
-                    Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
-                    intent.putExtra("username", user.getName());
-                    intent.putExtra("age", user.getAge());
-                    intent.putExtra("compatibility", user.getCompatibility());
-                    intent.putExtra("profileImageUrl", user.getProfileImageUrl());
-                    startActivity(intent);
+                    runOnUiThread(() -> {
+                        userAdapter = new UserAdapter(
+                                HomeActivity.this,
+                                userList,
+                                isCurrentUserPremium,
+                                user -> Toast.makeText(HomeActivity.this, "Clicked: " + user.getName(), Toast.LENGTH_SHORT).show()
+                        );
+                        recyclerView.setAdapter(userAdapter);
+                    });
+
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error loading users", e);
+                    Toast.makeText(this, "Failed to load user list", Toast.LENGTH_SHORT).show();
                 });
-
-                recyclerView.setAdapter(adapter);
-            } else {
-                Toast.makeText(this, "Failed to load users", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void applyBlurEffect() {
-        if (!isPremium) {
+        if (premium == null || !premium) {
             Drawable blurDrawable = ContextCompat.getDrawable(this, R.drawable.glass_blur_background);
             blurOverlay.setBackground(blurDrawable);
             blurOverlay.setAlpha(0.9f);
@@ -296,8 +331,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (currentUser != null) {
-            fetchPremiumStatusAndLoadUsers(); // Refresh status and users
+        applyBlurEffect();
+        if (recyclerView.getAdapter() != null) {
+            recyclerView.getAdapter().notifyDataSetChanged();
         }
     }
 
@@ -308,9 +344,8 @@ public class HomeActivity extends AppCompatActivity {
             return;
         }
 
-        doubleBackPressed = true;
+        this.doubleBackPressed = true;
         Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
         new Handler().postDelayed(() -> doubleBackPressed = false, 2000);
     }
 }
-*/

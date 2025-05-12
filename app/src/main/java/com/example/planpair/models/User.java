@@ -5,13 +5,17 @@ public class User {
     private String username;
     private int age;
     private int compatibility;
-    private int profileImageUrl;
+    private String profileImageUrl;
+    private boolean isLocked;
+    private boolean isPremium; // NEW
 
-    public User(String username, int age, int compatibility, int profileImageUrl) {
+
+    public User(String username, int age, int compatibility, String profileImageUrl, boolean isPremium) {
         this.username = username;
         this.age = age;
         this.compatibility = compatibility;
         this.profileImageUrl = profileImageUrl;
+        this.isPremium = isPremium;
     }
 
     public String getName() {
@@ -38,13 +42,21 @@ public class User {
         this.compatibility = compatibility;
     }
 
-    public int getprofileImageUrl() {
+    public String getProfileImageUrl() {
         return profileImageUrl;
     }
 
-    public void setImageResId(int profileImageUrl) {
+    public boolean isPremium() {
+        return isPremium;
+    }
+    public void setPremium(boolean premium) {
+        isPremium = premium;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
     }
+
 }
 // Satya
 /*

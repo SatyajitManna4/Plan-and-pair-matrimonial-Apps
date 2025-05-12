@@ -74,6 +74,6 @@ public class splashScreenActivity extends AppCompatActivity {
                 startActivity(new Intent(splashScreenActivity.this, LoginActivity.class));
                 finish();
             }
-        }, 2500); // Splash screen duration
+        }, 1000); // Splash screen duration
     }
 }
