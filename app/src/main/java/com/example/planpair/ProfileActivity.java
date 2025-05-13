@@ -143,13 +143,14 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+
     private void updateLikeButton() {
         if (isLiked) {
-            likeButton.setImageResource(R.drawable.baseline_favorite_24); // Filled heart icon
-            chatSection.setVisibility(View.VISIBLE);
+            likeButton.setImageResource(R.drawable.baseline_favorite_24); // Filled heart
+            chatSection.setVisibility(View.VISIBLE); // Show chat section
         } else {
-            likeButton.setImageResource(R.drawable.baseline_favorite_border_24); // Outline heart icon
-            chatSection.setVisibility(View.GONE);
+            likeButton.setImageResource(R.drawable.baseline_favorite_border_24); // Outline heart
+            chatSection.setVisibility(View.GONE); // Hide chat section
         }
     }
 }

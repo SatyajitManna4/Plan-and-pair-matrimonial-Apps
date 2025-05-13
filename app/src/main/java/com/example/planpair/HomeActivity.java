@@ -239,6 +239,8 @@ public class HomeActivity extends AppCompatActivity {
                         }
 
                         isCurrentUserPremium = premium != null && premium;
+                        // Hide or show Get Premium button
+                        getPremium.setVisibility(isCurrentUserPremium ? View.GONE : View.VISIBLE);
                     }
 
                     applyBlurEffect(); // Move inside after premium is fetched
