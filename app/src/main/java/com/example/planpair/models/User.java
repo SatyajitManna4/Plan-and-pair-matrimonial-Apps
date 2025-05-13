@@ -1,3 +1,4 @@
+//Map document fields with firestore database..
 
 package com.example.planpair.models;
 
@@ -9,6 +10,7 @@ public class User {
     private boolean isLocked;
     private boolean isPremium; // NEW
 
+    public User() {} // Firestore requires empty constructor
 
     public User(String username, int age, int compatibility, String profileImageUrl, boolean isPremium) {
         this.username = username;
@@ -49,16 +51,14 @@ public class User {
     public boolean isPremium() {
         return isPremium;
     }
+
     public void setPremium(boolean premium) {
         isPremium = premium;
     }
 
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
-
 }
-// Satya
+
+// error code
 /*
 package com.example.planpair.models;
 public class User {

@@ -1,5 +1,4 @@
 /*
-
 package com.example.planpair;
 
 import android.content.Intent;
@@ -141,7 +140,8 @@ public class HomeActivity extends AppCompatActivity {
 
 */
 
-//satya
+//fetch and show data from firestore database to UI
+
 package com.example.planpair;
 
 import android.content.Intent;
@@ -235,7 +235,7 @@ public class HomeActivity extends AppCompatActivity {
                         premium = documentSnapshot.getBoolean("isPremium");
 
                         if (name != null) {
-                            welCurrentUserName.setText(name);
+                            welCurrentUserName.setText("Welcome, "+name);
                         }
 
                         isCurrentUserPremium = premium != null && premium;
@@ -300,12 +300,13 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     runOnUiThread(() -> {
-                        userAdapter = new UserAdapter(
-                                HomeActivity.this,
-                                userList,
-                                isCurrentUserPremium,
-                                user -> Toast.makeText(HomeActivity.this, "Clicked: " + user.getName(), Toast.LENGTH_SHORT).show()
-                        );
+                        userAdapter = new UserAdapter(HomeActivity.this,userList,isCurrentUserPremium,user -> {
+                            Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                            intent.putExtra("username", user.getName());
+                            intent.putExtra("age", user.getAge());
+                            intent.putExtra("compatibility", user.getCompatibility());
+                            startActivity(intent);
+                        });
                         recyclerView.setAdapter(userAdapter);
                     });
 
@@ -331,11 +332,9 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        applyBlurEffect();
-        if (recyclerView.getAdapter() != null) {
-            recyclerView.getAdapter().notifyDataSetChanged();
-        }
+        loadCurrentUserProfile(); // Refresh user status and UI
     }
+
 
     @Override
     public void onBackPressed() {

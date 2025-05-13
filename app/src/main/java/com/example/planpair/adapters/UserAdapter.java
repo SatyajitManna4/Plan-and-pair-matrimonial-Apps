@@ -1,5 +1,4 @@
 /*
-
 package com.example.planpair.adapters;
 
 import android.content.Context;
@@ -109,8 +108,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 }
 */
 
-
-//satya
+//Fetch data from firebase firestore database...
 
 package com.example.planpair.adapters;
 
@@ -203,17 +201,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         // Heart button click listener (for example)
         holder.likeButton.setOnClickListener(v -> {
-            // Handle "like" button click, e.g., mark user as liked
-        });
-
-        // Lock overlay visibility based on some condition (e.g., premium user)
-        holder.likeButton.setOnClickListener(v -> {
             holder.isLiked = !holder.isLiked;
             holder.likeButton.setImageResource(holder.isLiked ?
                     R.drawable.baseline_favorite_24 :
                     R.drawable.baseline_favorite_border_24);
         });
     }
+
     @Override
     public int getItemCount() {
         return userList.size();

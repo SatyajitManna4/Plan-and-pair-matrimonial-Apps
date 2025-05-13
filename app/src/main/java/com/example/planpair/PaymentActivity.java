@@ -1,3 +1,4 @@
+/*
 package com.example.planpair;
 
 import android.annotation.SuppressLint;
@@ -37,27 +38,6 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
         payButton.setOnClickListener(view -> startPayment());
     }
 
-    //    private void startPayment() {
-//        Checkout checkout = new Checkout();
-//        checkout.setKeyID("rzp_test_uGj2098nJYQX0A"); // Replace with your Razorpay Key ID
-//
-//        try {
-//            JSONObject options = new JSONObject();
-//            options.put("name", "Plan & Pair Premium");
-//            options.put("description", "Unlock Premium Features");
-//            options.put("currency", "INR");
-//            options.put("amount", "100"); // ₹499.00 (amount in paise)
-//
-//            // Optional details
-////            options.put("prefill.email", "user@example.com");
-////            options.put("prefill.contact", "9876543210");
-//
-//            checkout.open(PaymentActivity.this, options);
-//        } catch (Exception e) {
-//            Toast.makeText(this, "Error in Payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
     private void startPayment() {
         Checkout checkout = new Checkout();
         checkout.setKeyID("rzp_test_uGj2098nJYQX0A"); // your Razorpay Test Key ID
@@ -91,6 +71,105 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
         Toast.makeText(this, "Payment Successful! Premium Unlocked", Toast.LENGTH_LONG).show();
         finish(); // Return to HomeActivity
+    }
+
+    @Override
+    public void onPaymentError(int code, String response) {
+        Toast.makeText(this, "Payment Failed! Please try again.", Toast.LENGTH_LONG).show();
+    }
+}*/
+
+// premium update into the firestore firebase
+
+package com.example.planpair;
+
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.razorpay.Checkout;
+import com.razorpay.PaymentResultListener;
+
+import org.json.JSONObject;
+
+public class PaymentActivity extends AppCompatActivity implements PaymentResultListener {
+
+    CardView cardView;
+
+    @SuppressLint("MissingInflatedId")
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_payment);
+
+        cardView = findViewById(R.id.card);
+
+        // Make status bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(android.graphics.Color.TRANSPARENT);
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            );
+        }
+
+        // Initialize Razorpay
+        Checkout.preload(getApplicationContext());
+
+        Button payButton = findViewById(R.id.payButton);
+        payButton.setOnClickListener(view -> startPayment());
+    }
+
+    private void startPayment() {
+        Checkout checkout = new Checkout();
+        checkout.setKeyID("rzp_test_uGj2098nJYQX0A"); // Replace with your Razorpay test/live key
+
+        try {
+            JSONObject options = new JSONObject();
+            options.put("name", "Plan & Pair Premium");
+            options.put("description", "Unlock Premium Features");
+            options.put("currency", "INR");
+            options.put("amount", "100"); // ₹1.00 in paise
+
+            // Enable payment methods
+            JSONObject methodOptions = new JSONObject();
+            methodOptions.put("netbanking", true);
+            methodOptions.put("card", true);
+            methodOptions.put("wallet", true);
+            methodOptions.put("upi", true);
+            options.put("method", methodOptions);
+
+            checkout.open(PaymentActivity.this, options);
+        } catch (Exception e) {
+            Toast.makeText(this, "Error in Payment: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onPaymentSuccess(String razorpayPaymentID) {
+        // Get current user UID
+        String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Update isPremium in FireStore
+        FirebaseFirestore.getInstance()
+                .collection("UsersData")
+                .document(currentUid)
+                .update("isPremium", true)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Payment Successful! Premium Unlocked", Toast.LENGTH_LONG).show();
+                    finish(); // Close PaymentActivity and return to HomeActivity
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Payment succeeded but failed to update premium status.", Toast.LENGTH_SHORT).show();
+                });
     }
 
     @Override
