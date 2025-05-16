@@ -4,6 +4,7 @@ package com.example.planpair.models;
 
 public class User {
     private String username;
+    private String uid;
     private int age;
     private int compatibility;
     private String profileImageUrl;
@@ -12,12 +13,13 @@ public class User {
 
     public User() {} // Firestore requires empty constructor
 
-    public User(String username, int age, int compatibility, String profileImageUrl, boolean isPremium) {
+    public User(String username, int age, int compatibility, String profileImageUrl, boolean isPremium, String uid) {
         this.username = username;
         this.age = age;
         this.compatibility = compatibility;
         this.profileImageUrl = profileImageUrl;
         this.isPremium = isPremium;
+        this.uid = uid;
     }
 
     public String getName() {
@@ -55,5 +57,5 @@ public class User {
     public void setPremium(boolean premium) {
         isPremium = premium;
     }
-
+    public String getUid() { return uid; }
 }

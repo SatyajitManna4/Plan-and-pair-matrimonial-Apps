@@ -12,7 +12,7 @@ public class CompatibilityCalculator {
 
     private static final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    public static int calculateAndStoreCompatibility(String currentUid, String otherUid) {
+   /* public static int calculateAndStoreCompatibility(String currentUid, String otherUid) {
         db.collection("UsersData").document(currentUid).get().addOnSuccessListener(currentSnapshot -> {
             db.collection("UsersData").document(otherUid).get().addOnSuccessListener(otherSnapshot -> {
                 if (!currentSnapshot.exists() || !otherSnapshot.exists()) return;
@@ -22,7 +22,7 @@ public class CompatibilityCalculator {
             });
         });
         return 0;
-    }
+    }*/
 
     private static int computeCompatibility(DocumentSnapshot user1, DocumentSnapshot user2) {
         int score = 0;

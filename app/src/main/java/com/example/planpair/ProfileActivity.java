@@ -117,7 +117,8 @@ public class ProfileActivity extends AppCompatActivity {
                         UserProfile otherUser = otherSnapshot.toObject(UserProfile.class);
                         otherUser.setUid(otherUserId);
 
-                        int score = CompatibilityCalculator.calculateAndStoreCompatibility(currentUser, String.valueOf(otherUser));
+//                        int score = CompatibilityCalculator.calculateAndStoreCompatibility(currentUser, String.valueOf(otherUser));
+                        int score =10;
                         if (compatibilityView != null) {
                             compatibilityView.setCompatibilityScore(score);
                             compatibilityView.invalidate();

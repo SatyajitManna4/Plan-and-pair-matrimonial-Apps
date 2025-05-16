@@ -161,11 +161,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.planpair.adapters.UserAdapter;
+import com.example.planpair.models.CompatibilityScore;
 import com.example.planpair.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -183,6 +185,7 @@ public class HomeActivity extends AppCompatActivity {
     private boolean isCurrentUserPremium = false;
     private List<User> userList;
     private UserAdapter userAdapter;
+    private DocumentSnapshot currentUserSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -231,36 +234,31 @@ public class HomeActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
+                        currentUserSnapshot = documentSnapshot;
                         String name = documentSnapshot.getString("username");
                         premium = documentSnapshot.getBoolean("isPremium");
 
                         if (name != null) {
-                            welCurrentUserName.setText("Welcome, "+name);
+                            welCurrentUserName.setText("Welcome, " + name);
                         }
 
                         isCurrentUserPremium = premium != null && premium;
-                        // Hide or show Get Premium button
                         getPremium.setVisibility(isCurrentUserPremium ? View.GONE : View.VISIBLE);
                     }
 
-                    applyBlurEffect(); // Move inside after premium is fetched
-                    loadUsersFromFirestore();
+                    applyBlurEffect();
+                    loadUsersFromFirestore(); // Load others only after current user profile
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Error fetching user data", e);
                     Toast.makeText(this, "Failed to load user profile", Toast.LENGTH_SHORT).show();
-                    applyBlurEffect(); // Still apply default blur
-                    loadUsersFromFirestore(); // still try loading users
+                    applyBlurEffect();
+                    loadUsersFromFirestore(); // Still load users
                 });
     }
 
     private void loadUsersFromFirestore() {
         String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        if (currentUid == null) {
-            Log.e(TAG, "Current user UID is null.");
-            return;
-        }
 
         firestore.collection("UsersData")
                 .get()
@@ -268,56 +266,101 @@ public class HomeActivity extends AppCompatActivity {
                     userList.clear();
 
                     for (DocumentSnapshot doc : querySnapshot) {
-                        if (doc.getId().equals(currentUid)) continue;
+                        String otherUid = doc.getId();
+                        if (otherUid.equals(currentUid)) continue;
 
                         String name = doc.getString("username");
-                        Object ageObj = doc.get("age");
-                        Object compatibilityObj = doc.get("compatibility");
                         String profileImageUrl = doc.getString("profileImageUrl");
                         Boolean isPremium = doc.getBoolean("isPremium");
 
+                        // Age
                         int age = 0;
-                        if (ageObj instanceof Long) {
-                            age = ((Long) ageObj).intValue();
-                        } else if (ageObj instanceof String) {
-                            try {
-                                age = Integer.parseInt((String) ageObj);
-                            } catch (NumberFormatException e) {
-                                Log.e(TAG, "Invalid age format for user: " + doc.getId());
-                            }
+                        Object ageObj = doc.get("age");
+                        if (ageObj instanceof Long) age = ((Long) ageObj).intValue();
+                        else if (ageObj instanceof String) {
+                            try { age = Integer.parseInt((String) ageObj); }
+                            catch (NumberFormatException e) { Log.e(TAG, "Invalid age format for user: " + otherUid); }
                         }
 
-                        int compatibility = 0;
-                        if (compatibilityObj instanceof Long) {
-                            compatibility = ((Long) compatibilityObj).intValue();
-                        }
+                        if (name == null || profileImageUrl == null) continue;
 
-                        if (name == null || profileImageUrl == null) {
-                            Log.e(TAG, "Invalid user data: " + doc.getId());
-                            continue;
-                        }
+                        // Compute compatibility
+                        int compatibility = computeCompatibility(currentUserSnapshot, doc);
 
-                        User user = new User(name, age, compatibility, profileImageUrl, isPremium != null && isPremium);
+                        // Store compatibility in Firestore
+                        firestore.collection("UsersData")
+                                .document(currentUid)
+                                .collection("CompatibilityScores")
+                                .document(otherUid)
+                                .set(new CompatibilityScore(compatibility))
+                                .addOnSuccessListener(aVoid -> Log.d(TAG, "Stored score for: " + otherUid))
+                                .addOnFailureListener(e -> Log.e(TAG, "Error storing score", e));
+
+                        // Show in UI
+                        User user = new User(name, age, compatibility, profileImageUrl, isPremium != null && isPremium, doc.getId());
                         userList.add(user);
                     }
 
                     runOnUiThread(() -> {
-                        userAdapter = new UserAdapter(HomeActivity.this,userList,isCurrentUserPremium,user -> {
+                        userAdapter = new UserAdapter(HomeActivity.this, userList, isCurrentUserPremium, user -> {
                             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                             intent.putExtra("username", user.getName());
                             intent.putExtra("age", user.getAge());
                             intent.putExtra("compatibility", user.getCompatibility());
+                            intent.putExtra("otherUserUid", user.getUid()); // Pass UID for fetching
                             startActivity(intent);
                         });
+
                         recyclerView.setAdapter(userAdapter);
                     });
-
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Error loading users", e);
                     Toast.makeText(this, "Failed to load user list", Toast.LENGTH_SHORT).show();
                 });
     }
+
+    private int computeCompatibility(DocumentSnapshot currentUser, DocumentSnapshot otherUser) {
+        int score = 0;
+        int total = 0;
+
+        // Compare list fields
+        String[] listFields = {"travel", "creative_passions", "movies", "music", "marriage", "language", "food", "family_structure", "familyType", "WeddingType"};
+
+        for (String field : listFields) {
+            List<String> currentList = (List<String>) currentUser.get(field);
+            List<String> otherList = (List<String>) otherUser.get(field);
+
+            if (currentList != null && otherList != null) {
+                total++;
+                int commonCount = 0;
+                for (String item : currentList) {
+                    if (otherList.contains(item)) commonCount++;
+                }
+                if (!currentList.isEmpty()) {
+                    score += (int) (((double) commonCount / currentList.size()) * 10);
+                }
+            }
+        }
+
+        // Compare string fields
+        String[] stringFields = {"social_media", "religion", "degree", "Season", "gender", "community", "education"};
+
+        for (String field : stringFields) {
+            String a = currentUser.getString(field);
+            String b = otherUser.getString(field);
+            if (a != null && b != null) {
+                total++;
+                if (a.equalsIgnoreCase(b)) score += 10;
+            }
+        }
+
+        if (total == 0) return 0;
+
+        int finalScore = (int) ((score / (double) total) * 10); // Scale score to 100
+        return Math.min(finalScore, 100);
+    }
+
 
     private void applyBlurEffect() {
         if (premium == null || !premium) {
