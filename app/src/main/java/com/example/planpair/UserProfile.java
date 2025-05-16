@@ -97,6 +97,7 @@ public class UserProfile {
 
 */
 // satyajit 1.00
+
 package com.example.planpair;
 import java.util.List;
 
@@ -120,6 +121,11 @@ public class UserProfile {
     private String degree;
     private String Season;
     private String gender;
+    private String profileImageUrl;
+    private String age;
+    private String community;
+    private String education;
+
 
     // Required empty constructor for Firestore
     public UserProfile() {
@@ -222,14 +228,6 @@ public class UserProfile {
         this.social_media = social_media;
     }
 
-    public String getReligion() {
-        return religion;
-    }
-
-    public void setReligion(String religion) {
-        this.religion = religion;
-    }
-
     public String getDegree() {
         return degree;
     }
@@ -253,4 +251,45 @@ public class UserProfile {
     public void setGender(String gender) {
         this.gender = gender;
     }
+
+    public String getProfileImageUrl() {
+        return profileImageUrl;
+    }
+
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getReligion() {
+        return religion;
+    }
+
+    public void setReligion(String religion) {
+        this.religion = religion;
+    }
+
+    public String getCommunity() {
+        return community;
+    }
+
+    public void setCommunity(String community) {
+        this.community = community;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
 }

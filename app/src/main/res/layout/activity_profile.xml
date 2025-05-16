@@ -129,6 +129,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Community : "
+                android:id="@+id/communityText"
                 android:textColor="@color/black"
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -136,6 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/birthDetailsText"
                 android:text="Birth Details : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -143,6 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/familyBgText"
                 android:text="Family Background : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -150,6 +153,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/professionIncomeText"
                 android:text="Profession and Income : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -157,6 +161,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/educationText"
                 android:text="Education : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -164,6 +169,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/relocateText"
                 android:text="Willingness to relocate : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -171,6 +177,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/marriageTimelineText"
                 android:text="Marriage timeline : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
@@ -178,6 +185,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:id="@+id/languageText"
                 android:text="Languages spoken : "
                 android:fontFamily="@font/opensans_variablefont_wdth_wght"/>
 
