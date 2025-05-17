@@ -170,6 +170,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -306,8 +307,9 @@ public class HomeActivity extends AppCompatActivity {
                             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                             intent.putExtra("username", user.getName());
                             intent.putExtra("age", user.getAge());
+                            intent.putExtra("profileImageUrl", user.getProfileImageUrl());
                             intent.putExtra("compatibility", user.getCompatibility());
-                            intent.putExtra("otherUserUid", user.getUid()); // Pass UID for fetching
+                            intent.putExtra("uid", user.getUid()); // Pass UID for fetching
                             startActivity(intent);
                         });
 
@@ -325,26 +327,31 @@ public class HomeActivity extends AppCompatActivity {
         int total = 0;
 
         // Compare list fields
-        String[] listFields = {"travel", "creative_passions", "movies", "music", "marriage", "language", "food", "family_structure", "familyType", "WeddingType"};
+        String[] listFields = {
+                "travel", "creative_passions", "movies", "music",
+                "marriage", "language", "food", "family_structure",
+                "familyType", "WeddingType"
+        };
 
         for (String field : listFields) {
-            List<String> currentList = (List<String>) currentUser.get(field);
-            List<String> otherList = (List<String>) otherUser.get(field);
+            List<String> currentList = parseList(currentUser.get(field));
+            List<String> otherList = parseList(otherUser.get(field));
 
-            if (currentList != null && otherList != null) {
+            if (!currentList.isEmpty() && !otherList.isEmpty()) {
                 total++;
                 int commonCount = 0;
                 for (String item : currentList) {
                     if (otherList.contains(item)) commonCount++;
                 }
-                if (!currentList.isEmpty()) {
-                    score += (int) (((double) commonCount / currentList.size()) * 10);
-                }
+                score += (int) (((double) commonCount / currentList.size()) * 10);
             }
         }
 
-        // Compare string fields
-        String[] stringFields = {"social_media", "religion", "degree", "Season", "gender", "community", "education"};
+        // Compare string fields Removed gender from here
+        String[] stringFields = {
+                "social_media", "religion", "degree", "Season",
+                "community", "education"
+        };
 
         for (String field : stringFields) {
             String a = currentUser.getString(field);
@@ -355,12 +362,37 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
+        // Special handling for gender
+        String genderA = currentUser.getString("gender");
+        String genderB = otherUser.getString("gender");
+
+        if (genderA != null && genderB != null) {
+            total++;
+            if (!genderA.equalsIgnoreCase(genderB)) {
+                score += 15; // Different gender → more compatible
+            } else {
+                score += 0;  // Same gender → no extra points
+            }
+        }
+
+
         if (total == 0) return 0;
 
-        int finalScore = (int) ((score / (double) total) * 10); // Scale score to 100
+        int finalScore = (int) ((score / (double) total) * 10); // Scale to 100
         return Math.min(finalScore, 100);
     }
 
+    // Helper method to convert Firestore field to List<String>
+    private List<String> parseList(Object rawField) {
+        if (rawField instanceof List) {
+            return (List<String>) rawField;
+        } else if (rawField instanceof String) {
+            String[] parts = ((String) rawField).split(",\\s*");
+            return Arrays.asList(parts);
+        } else {
+            return new ArrayList<>();
+        }
+    }
 
     private void applyBlurEffect() {
         if (premium == null || !premium) {

@@ -57,5 +57,6 @@ public class User {
     public void setPremium(boolean premium) {
         isPremium = premium;
     }
+
     public String getUid() { return uid; }
 }

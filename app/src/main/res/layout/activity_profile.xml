@@ -19,7 +19,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:id="@+id/currUserName"
             android:text="Aman Jaiswal"
             android:textColor="#AFAB38"
             android:textSize="40sp"
@@ -75,16 +75,16 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/userAge"
                     android:fontFamily="@font/opensans_variablefont_wdth_wght"
-                    android:text="Age : 32"
+                    android:text="Age : "
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/userName"
+                    android:id="@+id/userReligion"
                     android:fontFamily="@font/opensans_variablefont_wdth_wght"
-                    android:text="Religion : Hindu"
+                    android:text="Religion : "
                     android:textColor="@color/black"
                     android:textSize="18sp"/>
 
@@ -108,7 +108,7 @@
                         android:id="@+id/chatText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Chat with\nAman"
+                        android:text="Chat with\n"
                         android:fontFamily="@font/opensans_variablefont_wdth_wght"
                         android:textSize="18sp"
                         android:textColor="@color/black"/>

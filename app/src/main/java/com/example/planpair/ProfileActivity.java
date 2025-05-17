@@ -65,93 +65,155 @@ public class ProfileActivity extends AppCompatActivity {
 
 package com.example.planpair;
 
+import android.text.TextUtils;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.bumptech.glide.Glide;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.List;
+
 public class ProfileActivity extends AppCompatActivity {
-    private boolean isLiked = false;
+
+    private ImageView profileImageView;
     private ImageView likeButton;
-    private LinearLayout chatSection;
-    private String currentUser;
-    private String otherUserId;
-    private FirebaseFirestore db;
-    private FirebaseUser firebaseUser;
+    private TextView currUserName, userReligion, userAge, chatText, communityText, birthDetailsText,
+            familyBgText, professionIncomeText, educationText, relocateText,
+            marriageTimelineText, languageText;
+
     private CompatibilityScoreView compatibilityView;
+    private LinearLayout chatSection;
+
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_profile);
 
-        otherUserId = getIntent().getStringExtra("otherUserId");
+        // Initialize Firebase Firestore
         db = FirebaseFirestore.getInstance();
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        // Initialize Views
+        profileImageView = findViewById(R.id.profileImageView);
         likeButton = findViewById(R.id.likeButton);
+        ImageView chatIcon = findViewById(R.id.chatIcon);
+
+        currUserName=findViewById(R.id.currUserName);
+        userReligion = findViewById(R.id.userReligion);
+        userAge = findViewById(R.id.userAge);
+        chatText = findViewById(R.id.chatText);
+        communityText = findViewById(R.id.communityText);
+        birthDetailsText = findViewById(R.id.birthDetailsText);
+        familyBgText = findViewById(R.id.familyBgText);
+        professionIncomeText = findViewById(R.id.professionIncomeText);
+        educationText = findViewById(R.id.educationText);
+        relocateText = findViewById(R.id.relocateText);
+        marriageTimelineText = findViewById(R.id.marriageTimelineText);
+        languageText = findViewById(R.id.languageText);
+
         chatSection = findViewById(R.id.chatSection);
         compatibilityView = findViewById(R.id.compatibilityView);
 
-        if (firebaseUser == null || otherUserId == null) return;
+        // Get Intent Data
+        Intent intent = getIntent();
+        String uid = intent.getStringExtra("uid");
+        String name = intent.getStringExtra("username");
+        int age = intent.getIntExtra("age", 0);
+        String profileImageUrl = intent.getStringExtra("profileImageUrl");
+        int compatibilityScore = intent.getIntExtra("compatibility", 0);
 
-        String currentUserId = firebaseUser.getUid();
+        // Set Name, Age, Religion, ChatText
+        currUserName.setText(""+name);
+        userAge.setText("Age : " + age);
+        chatText.setText("Chat with\n" + name);
 
-        db.collection("UsersData").document(currentUserId).get().addOnSuccessListener(currentSnapshot -> {
-            if (currentSnapshot.exists()) {
-                currentUser = String.valueOf(currentSnapshot.toObject(UserProfile.class));
-                currentUser.strip();
+        // Load Profile Image
+        Glide.with(this)
+                .load(profileImageUrl)
+                .placeholder(R.drawable.profile_icon)
+                .error(R.drawable.profile_icon)
+                .into(profileImageView);
 
-                db.collection("UsersData").document(otherUserId).get().addOnSuccessListener(otherSnapshot -> {
-                    if (otherSnapshot.exists()) {
-                        UserProfile otherUser = otherSnapshot.toObject(UserProfile.class);
-                        otherUser.setUid(otherUserId);
+        // Set compatibility score
+        compatibilityView.setCompatibilityScore(compatibilityScore);
 
-//                        int score = CompatibilityCalculator.calculateAndStoreCompatibility(currentUser, String.valueOf(otherUser));
-                        int score =10;
-                        if (compatibilityView != null) {
-                            compatibilityView.setCompatibilityScore(score);
-                            compatibilityView.invalidate();
-                            compatibilityView.requestLayout();
+        // Fetch full details from Firestore
+        if (uid != null && !uid.isEmpty()) {
+            db.collection("UsersData").document(uid)
+                    .get()
+                    .addOnSuccessListener(documentSnapshot -> {
+                        if (documentSnapshot.exists()) {
+                            String religion = documentSnapshot.getString("religion");
+                            String community = documentSnapshot.getString("community");
+                            String birthDetails = documentSnapshot.getString("dob");
+                            String education = documentSnapshot.getString("highestQual");
+
+                            List<String> familyList = (List<String>) documentSnapshot.get("family_structure");
+                            String familyBg = (familyList != null && !familyList.isEmpty()) ? TextUtils.join(", ", familyList) : "N/A";
+
+                            List<String> designationList = (List<String>) documentSnapshot.get("designation");
+                            String designation = (designationList != null && !designationList.isEmpty())
+                                    ? TextUtils.join(", ", designationList)
+                                    : "N/A";
+
+                            List<String> incomeList = (List<String>) documentSnapshot.get("income");
+                            String income = (incomeList != null && !incomeList.isEmpty())
+                                    ? TextUtils.join(", ", incomeList)
+                                    : "N/A";
+
+                            String professionIncome = designation + " & " + income;
+
+
+                            List<String> relocateList = (List<String>) documentSnapshot.get("travel");
+                            String relocate = (relocateList != null && !relocateList.isEmpty()) ? TextUtils.join(", ", relocateList) : "N/A";
+
+                            List<String> marriageTimelineList = (List<String>) documentSnapshot.get("marriage");
+                            String marriageTimeline = (marriageTimelineList != null && !marriageTimelineList.isEmpty()) ? TextUtils.join(", ", marriageTimelineList) : "N/A";
+
+                            List<String> languageList = (List<String>) documentSnapshot.get("language");
+                            String language = (languageList != null && !languageList.isEmpty()) ? TextUtils.join(", ", languageList) : "N/A";
+
+
+
+                            userReligion.setText("Religion : " + (religion != null ? religion : "N/A"));
+                            communityText.setText("Community : " + (community != null ? community : "N/A"));
+                            birthDetailsText.setText("Birth Details : " + (birthDetails != null ? birthDetails : "N/A"));
+                            educationText.setText("Education : " + (education != null ? education : "N/A"));
+
+                            familyBgText.setText("Family Background : " + familyBg);
+                            professionIncomeText.setText("Profession and Income : " + professionIncome);
+                            familyBgText.setText("Family Background : " + familyBg);
+                            relocateText.setText("Willingness to relocate : " + relocate);
+                            marriageTimelineText.setText("Marriage timeline : " + marriageTimeline);
+                            languageText.setText("Languages spoken : " + language);
+
+                        } else {
+                            Toast.makeText(this, "User data not found", Toast.LENGTH_SHORT).show();
                         }
-
-                    }
-                });
-            }
-        });
-
-        chatSection.setVisibility(View.GONE);
-
-        likeButton.setOnClickListener(v -> {
-            isLiked = !isLiked;
-            updateLikeButton();
-        });
-
-        chatSection.setOnClickListener(v -> {
-            if (isLiked) {
-                startActivity(new Intent(ProfileActivity.this, ChatActivity.class));
-            }
-        });
-    }
-
-
-    private void updateLikeButton() {
-        if (isLiked) {
-            likeButton.setImageResource(R.drawable.baseline_favorite_24); // Filled heart
-            chatSection.setVisibility(View.VISIBLE); // Show chat section
-        } else {
-            likeButton.setImageResource(R.drawable.baseline_favorite_border_24); // Outline heart
-            chatSection.setVisibility(View.GONE); // Hide chat section
+                    })
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Failed to load profile: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
         }
+
+        // Like button toggle
+        likeButton.setOnClickListener(v ->
+                likeButton.setImageResource(R.drawable.baseline_favorite_24));
+
+        // Handle Chat Section Click
+        chatSection.setOnClickListener(v -> {
+            // Launch chat activity here if needed
+            Toast.makeText(this, "Chat feature coming soon", Toast.LENGTH_SHORT).show();
+        });
     }
 }
