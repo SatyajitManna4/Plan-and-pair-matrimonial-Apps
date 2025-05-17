@@ -8,18 +8,20 @@ public class User {
     private int age;
     private int compatibility;
     private String profileImageUrl;
-    private boolean isLocked;
+    private boolean isLiked;
+
     private boolean isPremium; // NEW
 
     public User() {} // Firestore requires empty constructor
 
-    public User(String username, int age, int compatibility, String profileImageUrl, boolean isPremium, String uid) {
+    public User(String username, int age, int compatibility, String profileImageUrl, boolean isPremium, String uid,boolean isLiked) {
         this.username = username;
         this.age = age;
         this.compatibility = compatibility;
         this.profileImageUrl = profileImageUrl;
         this.isPremium = isPremium;
         this.uid = uid;
+        this.isLiked = isLiked;
     }
 
     public String getName() {
@@ -59,4 +61,8 @@ public class User {
     }
 
     public String getUid() { return uid; }
+
+    public boolean isLiked() { return isLiked; }
+
+    public void setLiked(boolean liked) { isLiked = liked; }
 }

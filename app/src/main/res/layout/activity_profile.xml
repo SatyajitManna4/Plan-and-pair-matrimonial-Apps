@@ -46,11 +46,11 @@
                     android:background="@drawable/profile_icon"
                     android:clipToOutline="true"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/sample_img2" />
+                    android:src="@drawable/default_profile" />
 
                 <!-- Heart Button Positioned at Bottom-Right -->
                 <ImageView
-                    android:id="@+id/likeButton"
+                    android:id="@+id/likeButtonProfile"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:src="@drawable/baseline_favorite_border_24"

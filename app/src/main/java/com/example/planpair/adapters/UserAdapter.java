@@ -113,6 +113,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 package com.example.planpair.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -172,7 +173,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
 
         // Set user details to views
         holder.userName.setText(user.getName());
-        holder.userAge.setText(String.valueOf(user.getAge()));
+        holder.userAge.setText(String.valueOf("Age: "+user.getAge()));
         holder.compatibilityScore.setText("Compatibility: " + user.getCompatibility() + "%");
 
         // Load the profile image using Glide (or any image loading library)
@@ -180,6 +181,12 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 .load(user.getProfileImageUrl()) // Assuming you store the URL of the image in User object
                 .into(holder.profileImage);
 
+        // Set like icon based on status
+        if (user.isLiked()) {
+            holder.likeButton.setImageResource(R.drawable.baseline_favorite_24);
+        } else {
+            holder.likeButton.setImageResource(R.drawable.baseline_favorite_border_24);
+        }
 
         if (position >= 5 && !isPremium) {
             // Lock premium content for non-premium users
@@ -199,13 +206,25 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             }
         });
 
-        // Heart button click listener (for example)
+        // Like button click listener
         holder.likeButton.setOnClickListener(v -> {
-            holder.isLiked = !holder.isLiked;
-            holder.likeButton.setImageResource(holder.isLiked ?
-                    R.drawable.baseline_favorite_24 :
-                    R.drawable.baseline_favorite_border_24);
+            boolean newStatus = !user.isLiked();
+            user.setLiked(newStatus);
+
+            // Update icon immediately
+            holder.likeButton.setImageResource(
+                    newStatus ? R.drawable.baseline_favorite_24 : R.drawable.baseline_favorite_border_24
+            );
+
+            // Update Firestore
+            FirebaseFirestore.getInstance()
+                    .collection("UsersData")
+                    .document(user.getUid())
+                    .update("isLiked", newStatus)
+                    .addOnSuccessListener(aVoid -> Log.d("Like", "Updated like status"))
+                    .addOnFailureListener(e -> Log.e("Like", "Failed to update like status", e));
         });
+
     }
 
     @Override
