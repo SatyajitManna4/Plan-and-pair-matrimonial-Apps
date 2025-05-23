@@ -1,5 +1,4 @@
 //fetch and show data from firestore database to UI
-
 package com.example.planpair;
 
 import android.content.Intent;
@@ -204,6 +203,9 @@ public class HomeActivity extends AppCompatActivity {
                     }
 
                     runOnUiThread(() -> {
+                        // Sort users by compatibility score in descending order
+                        userList.sort((u1, u2) -> Integer.compare(u2.getCompatibility(), u1.getCompatibility()));
+
                         userAdapter = new UserAdapter(HomeActivity.this, userList, isCurrentUserPremium, user -> {
                             Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                             intent.putExtra("username", user.getName());
@@ -217,6 +219,7 @@ public class HomeActivity extends AppCompatActivity {
 
                         recyclerView.setAdapter(userAdapter);
                     });
+
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Error loading users", e);
