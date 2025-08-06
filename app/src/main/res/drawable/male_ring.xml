@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="100"
+    android:viewportHeight="120">
+
+    <!-- Outer circle (ring outer edge) -->
+    <path
+        android:fillColor="@color/peach"
+        android:pathData="M50,24
+                          A26,26 0 1,1 50,76
+                          A26,26 0 1,1 50,24Z"/>
+
+    <!-- Inner circle (ring hole) - transparent fill -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M50,27
+                          A23,23 0 1,1 50,73
+                          A23,23 0 1,1 50,27Z"/>
+
+</vector>

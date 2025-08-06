@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:orientation="vertical"
-    android:layout_gravity="center"
-    android:gravity="center"
+    android:id="@+id/splashRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".splashScreenActivity">
 
+    <!-- Female Ring -->
     <ImageView
-        android:id="@+id/applogo"
-        android:layout_width="400dp"
-        android:layout_height="200dp"
-        android:src="@drawable/plan_pair_logo" />
+        android:id="@+id/femaleRing"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/female_ring"
+        android:visibility="invisible" />
 
-</LinearLayout>
+    <!-- Male Ring -->
+    <ImageView
+        android:id="@+id/maleRing"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/male_ring"
+        android:visibility="invisible" />
+
+    <!-- Plan & Pair Text -->
+    <TextView
+        android:id="@+id/planPairText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/femaleRing"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/hankengrotesk_variablefont_wght"
+        android:text="Plan and Pair"
+        android:textSize="20sp"
+        android:textColor="@color/peach"
+        android:visibility="invisible" />
+</RelativeLayout>

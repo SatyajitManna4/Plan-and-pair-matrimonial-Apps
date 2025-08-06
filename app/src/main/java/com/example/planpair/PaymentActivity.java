@@ -137,7 +137,7 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
             options.put("name", "Plan & Pair Premium");
             options.put("description", "Unlock Premium Features");
             options.put("currency", "INR");
-            options.put("amount", "100"); // ₹1.00 in paise
+            options.put("amount", "49900"); // ₹499.00 in paise
 
             // Enable payment methods
             JSONObject methodOptions = new JSONObject();
@@ -155,17 +155,18 @@ public class PaymentActivity extends AppCompatActivity implements PaymentResultL
 
     @Override
     public void onPaymentSuccess(String razorpayPaymentID) {
-        // Get current user UID
         String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // Update isPremium in FireStore
         FirebaseFirestore.getInstance()
                 .collection("UsersData")
                 .document(currentUid)
                 .update("isPremium", true)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Payment Successful! Premium Unlocked", Toast.LENGTH_LONG).show();
-                    finish(); // Close PaymentActivity and return to HomeActivity
+
+                    // Set result OK to notify HomeActivity
+                    setResult(RESULT_OK);
+                    finish();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(this, "Payment succeeded but failed to update premium status.", Toast.LENGTH_SHORT).show();

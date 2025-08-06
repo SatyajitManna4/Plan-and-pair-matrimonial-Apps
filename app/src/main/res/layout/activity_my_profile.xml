@@ -1,94 +1,219 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MyProfileActivity">
+    android:background="@color/white">
 
-    <androidx.cardview.widget.CardView
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Profile"
+                android:textColor="@color/black"
+                android:textSize="40sp"
+                android:fontFamily="@font/hankengrotesk_variablefont_wght"
+                android:textStyle="bold" />
+
+            <!-- Profile Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:background="@drawable/profile_icon"
+                        android:clipToOutline="true"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/default_profile" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/nameText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Neha"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/ageText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Age : 32"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+                    <TextView
+                        android:id="@+id/religionText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Religion : Hindu"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Personal Details Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:background="@color/sagegreen">
+
+                    <TextView
+                        android:id="@+id/editPersonalDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Personal Details"
+                        android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Interests Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:background="@color/sagegreen">
+
+                    <TextView
+                        android:id="@+id/editInterestDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                        android:text="Interests"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Wedding Goals Card -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:background="@color/sagegreen">
+
+                    <TextView
+                        android:id="@+id/editWeddingDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/opensans_variablefont_wdth_wght"
+                        android:text="Wedding Goals"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Logout and Delete Account -->
+            <TextView
+                android:id="@+id/logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="Log out"
+                android:textColor="@color/peach"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+
+            <TextView
+                android:id="@+id/delAcc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delete your account"
+                android:textColor="@color/peach"
+                android:textSize="16sp"
+                android:padding="12dp"
+                android:fontFamily="@font/opensans_variablefont_wdth_wght" />
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp">
+        android:background="@android:color/transparent"
+        android:theme="@style/CardTextStyle"
+        app:itemIconTint="@color/peach"
+        app:itemTextColor="@color/peach"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
-        <TextView
-            android:id="@+id/homePage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="My Profile Details"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Bio Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp">
-
-        <TextView
-            android:id="@+id/bioTxtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Bio Page"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Interest Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp">
-
-        <TextView
-            android:id="@+id/interestTxtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Interest Page"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-    </androidx.cardview.widget.CardView>
-
-    <!-- Wedding Goal Card -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        app:cardCornerRadius="12dp"
-        app:cardElevation="6dp">
-
-        <TextView
-            android:id="@+id/weddingGoalTxtView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Wedding Goal Page"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Logout Button -->
-    <Button
-        android:id="@+id/logout_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@color/black"
-        android:text="Logout"
-        android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:padding="12dp"
-        android:layout_gravity="center"/>
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

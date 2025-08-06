@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/currUserName"
-            android:text="Aman Jaiswal"
+            android:text="Name"
             android:textColor="#AFAB38"
             android:textSize="40sp"
             android:fontFamily="@font/hankengrotesk_variablefont_wght"
@@ -199,13 +199,14 @@
             android:layout_marginTop="16dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Your bond with Aman is this strong!"
-                android:fontFamily="@font/opensans_variablefont_wdth_wght"
-                android:textSize="15sp"
-                android:textColor="@color/black"
-                android:textStyle="italic"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bondShow"
+            android:text="Your bond with Aman is this strong!"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:textStyle="italic"/>
 
             <com.example.planpair.CompatibilityScoreView
                 android:layout_marginTop="16dp"

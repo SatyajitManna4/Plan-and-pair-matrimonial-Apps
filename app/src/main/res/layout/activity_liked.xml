@@ -1,0 +1,72 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp"
+    tools:context=".LikedActivity">
+
+    <!-- Big Heading -->
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Liked Profiles"
+        android:textColor="@color/black"
+        android:fontFamily="@font/hankengrotesk_variablefont_wght"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <!-- A container layout for text + button -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/textButtonGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/welcomeText"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/likedText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You have been liked!"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <Button
+            android:id="@+id/likedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="@color/peach"
+            android:fontFamily="@font/opensans_variablefont_wdth_wght"
+            android:text="Show Likes"
+            app:layout_constraintBottom_toBottomOf="@id/likedText"
+            app:layout_constraintStart_toEndOf="@id/likedText"
+            app:layout_constraintTop_toTopOf="@id/likedText"
+            app:layout_constraintVertical_bias="0.521" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- RecyclerView below everything -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        android:nestedScrollingEnabled="false"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/textButtonGroup"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

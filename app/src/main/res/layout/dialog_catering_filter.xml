@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/priceRadioGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <RadioButton
+        android:id="@+id/radioUnder500"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Less than ₹500" />
+    <RadioButton
+        android:id="@+id/radio500to800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="₹500 - ₹800" />
+
+    <RadioButton
+        android:id="@+id/radioAbove800"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Above ₹800" />
+
+
+</RadioGroup>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutWishlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:background="#FDA98E"
+    tools:context=".WishlistActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="WEDDING WISHLIST"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"/>
+
+
+    <TextView
+        android:id="@+id/textViewEmptyWishlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Your wishlist is empty."
+        android:textSize="18sp"
+        android:textColor="#888"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="20dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewWishlist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

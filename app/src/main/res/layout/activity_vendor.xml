@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAB5CC"
+    tools:context=".VendorActivity">
+    <LinearLayout
+        android:id="@+id/topHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginTop="22dp"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/circle_background"
+            android:src="@drawable/ic_arrow"
+            android:contentDescription="Back"
+            android:layout_marginRight="8dp"
+            app:tint="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/coupleNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_1_name2"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/weddingDateText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wedding Date"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/iconsLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/wishlistIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="12dp"
+                android:src="@drawable/ic_heart"
+                android:contentDescription="Wishlist"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="4dp" />
+
+            <ImageButton
+                android:id="@+id/todoIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_todo"
+                android:contentDescription="To-Do List"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="4dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/vendors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hey Name 1 \nWhat're you looking for ?"
+            android:textSize="23sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="8dp"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wcard1"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardBackgroundColor="#FFE2E0"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="VENUE  ➚"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Lawn, Banquet Hall, Farmhouse"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="265dp"
+                        android:src="@drawable/venue"
+                        android:elevation="10dp"
+                        android:background="@android:color/white"
+                        android:scaleType="centerCrop"
+                        />
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wcard2"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:cardBackgroundColor="#A5D4FA"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="220dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="Photographer ➚"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Photographer, cinematographer"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="265dp"
+                        android:src="@drawable/photographer"
+                        android:elevation="10dp"
+                        android:background="@android:color/white"
+                        android:scaleType="centerCrop"
+
+                        />
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wcard3"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    app:cardBackgroundColor="#FD9E97"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="Makeup  ➚\nArtist"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Bridal Makeup, Mehndi Artist, ..."
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="265dp"
+                        android:src="@drawable/makup_artist"
+                        android:elevation="10dp"
+                        android:background="@android:color/white"
+                        android:scaleType="centerCrop" />
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wcard4"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    app:cardBackgroundColor="#FDCF8A"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="Decor ➚"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Decoration, Wedding Planner"
+                            android:textSize="15sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="265dp"
+                        android:src="@drawable/decor"
+                        android:elevation="10dp"
+                        android:background="@android:color/white"
+                        android:scaleType="centerCrop" />
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/wcard5"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    app:cardBackgroundColor="#E6F17A"
+                    app:cardElevation="11dp"
+                    app:cardCornerRadius="11dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:padding="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:text="Catering ➚"
+                            android:textColor="@color/black"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:text="Catering, Bartenders, Live Counter"
+                            android:textSize="13sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="265dp"
+                        android:src="@drawable/catering"
+                        android:elevation="10dp"
+                        android:background="@android:color/white"
+                        android:scaleType="centerCrop" />
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

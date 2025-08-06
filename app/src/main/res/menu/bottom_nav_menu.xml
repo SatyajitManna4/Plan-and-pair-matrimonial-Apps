@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_notif"
-        android:icon="@drawable/baseline_notifications_none_24"
-        android:title="Notification"/>
+        android:id="@+id/nav_home"
+        android:icon="@drawable/baseline_home_filled_24"
+        android:title="Home"/>
 
     <item
         android:id="@+id/nav_liked"
@@ -15,6 +15,10 @@
         android:id="@+id/nav_chat"
         android:icon="@drawable/baseline_chat_24"
         android:title="Chat"/>
+    <item
+        android:id="@+id/nav_planner"
+        android:icon="@drawable/baseline_event_24"
+        android:title="Planner"/>
 
     <item
         android:id="@+id/nav_myprof"

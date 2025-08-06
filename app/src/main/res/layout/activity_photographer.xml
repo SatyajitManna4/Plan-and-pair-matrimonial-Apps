@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FDE1EA"
+    tools:context=".PhotographerActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="22dp">
+
+        <EditText
+            android:id="@+id/searchAutoTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/search_back"
+            android:drawableLeft="@drawable/ic_search"
+            android:drawablePadding="4dp"
+            android:hint="Discover Photographers..."
+            android:imeOptions="actionSearch"
+            android:maxLines="1"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black" />
+    </LinearLayout>
+
+
+    <!-- Main Filter ChipGroup -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/mainFilterChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:singleSelection="true"
+        android:gravity="center_horizontal"
+        app:chipSpacing="10dp">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipAll"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="All"
+            android:checkable="true"
+            android:checked="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipBudget"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Budget"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#FDF4A0"
+            android:checkable="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipRating"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:text="Rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#FDF4A0"
+            android:checkable="true" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipType"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Type"
+            android:textSize="15sp"
+            android:textColor="@color/black"
+            android:backgroundTint="#FDF4A0"
+            android:checkable="true" />
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Sub Filter ChipGroup - updated dynamically in Java -->
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/subFilterChipGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:singleSelection="true"
+        android:gravity="center_horizontal"
+        app:chipSpacing="8dp" />
+
+    <TextView
+        android:id="@+id/noResultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No photographers match your filter."
+        android:textSize="16sp"
+        android:textColor="@android:color/darker_gray"
+        android:gravity="center"
+        android:visibility="gone"
+        android:padding="12dp"
+        android:layout_marginTop="10dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp" />
+    </LinearLayout>
+</LinearLayout>

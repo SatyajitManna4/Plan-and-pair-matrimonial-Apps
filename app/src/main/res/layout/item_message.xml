@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/messageContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- Profile Image -->
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_user_placeholder"
+        android:background="@drawable/circle_bg"
+        android:contentDescription="Profile Image" />
+
+    <!-- Message Text -->
+    <TextView
+        android:id="@+id/messageText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/profileImage"
+        android:layout_marginEnd="32dp"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:textColor="#000000"
+        android:background="@drawable/bg_received_message" /> <!-- default -->
+
+    <!-- Timestamp -->
+    <TextView
+        android:id="@+id/timeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messageText"
+        android:layout_alignStart="@id/messageText"
+        android:text="10:45 AM"
+        android:textSize="12sp"
+        android:textColor="#888888" />
+
+    <!-- Status Icon -->
+    <ImageView
+        android:id="@+id/statusIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@id/messageText"
+        android:layout_alignEnd="@id/messageText"
+        android:layout_marginStart="4dp"
+        android:src="@drawable/ic_delivered"
+        android:visibility="gone" />
+</RelativeLayout>

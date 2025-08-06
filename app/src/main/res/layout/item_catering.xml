@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardCateringService"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:layout_marginTop="4dp"
+    android:elevation="4dp"
+    android:radius="16dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Decoration Image -->
+        <ImageView
+            android:id="@+id/imageCaterar"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/catering"
+            android:background="@drawable/rounded_top" />
+
+        <!-- Info Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp"
+            android:background="#F8E9A1">
+
+            <!-- Title + Rating -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/catererServiceName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Caterer Service Name"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#000000" />
+
+                <TextView
+                    android:id="@+id/textRating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="★ 5.0 (2 reviews)"
+                    android:textColor="#D81B60"
+                    android:textSize="14sp"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
+            <!-- Location -->
+            <TextView
+                android:id="@+id/cServiceLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📍location"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+
+            <!-- Starting Price -->
+            <TextView
+                android:id="@+id/textRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Starting price\n₹400 onwards"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

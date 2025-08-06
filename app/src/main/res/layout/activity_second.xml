@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="22dp"
+    android:background="@color/white"
+    tools:context=".SecondActivity">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        android:background="@color/white">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="#FFE081">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:src="@drawable/wedding_planner_image" />
+
+                <TextView
+                    android:id="@+id/weddingDateTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="15dp"
+                    android:text="What's your\nWedding date?"
+                    android:textAlignment="center"
+                    android:textSize="20sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+                <CalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="310dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/calender_background"
+                    android:focusedMonthDateColor="@android:color/black"
+                    android:unfocusedMonthDateColor="@android:color/black"
+                    android:weekDayTextAppearance="@style/CalendarWeekText"
+                    android:dateTextAppearance="@style/CalendarDateText"
+                   />
+
+<!--                <com.prolificinteractive.materialcalendarview.MaterialCalendarView-->
+<!--                    android:id="@+id/calendarView"-->
+<!--                    android:layout_width="300dp"-->
+<!--                    android:layout_height="300dp"-->
+<!--                    android:layout_margin="10dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:background="@drawable/calender_background"-->
+<!--                    app:mcv_showOtherDates="all"-->
+<!--                    app:mcv_arrowColor="#000000"-->
+<!--                    app:mcv_headerTextAppearance="@style/CalendarHeaderText"-->
+<!--                    app:mcv_weekDayTextAppearance="@style/CalendarWeekText"-->
+<!--                    app:mcv_dateTextAppearance="@style/CalendarDateText"-->
+<!--                    />-->
+
+                <Button
+                    android:id="@+id/doneButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="2dp"
+                    android:backgroundTint="#F84C4C"
+                    android:text="Continue"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

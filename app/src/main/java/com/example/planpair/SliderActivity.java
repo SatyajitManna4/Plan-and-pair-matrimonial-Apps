@@ -29,6 +29,7 @@ public class SliderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // Set status bar color to transparent for a better visual effect.
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(android.graphics.Color.TRANSPARENT);
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);

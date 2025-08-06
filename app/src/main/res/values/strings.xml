@@ -70,4 +70,6 @@
 
     <!-- Other strings -->
     <string name="pick_a_wedding_theme_vibe">Pick a wedding theme/vibe</string>
+    <string name="name_1_name2"><![CDATA[Name 1 & Name2]]></string>
+
 </resources>

@@ -1,0 +1,73 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="100"
+    android:viewportHeight="120">
+
+    <!-- Outer circle (ring outer edge) -->
+    <path
+        android:fillColor="@color/peach"
+        android:pathData="M50,24
+                          A26,26 0 1,1 50,76
+                          A26,26 0 1,1 50,24Z"/>
+
+    <!-- Inner circle (ring hole) -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M50,27
+                          A23,23 0 1,1 50,73
+                          A23,23 0 1,1 50,27Z"/>
+
+    <!-- Diamond moved up by 10 units -->
+    <path
+        android:fillColor="@color/peach"
+        android:pathData="M44,14 L50,26 L56,14 L53,10 L47,10 Z"/>
+
+</vector>
+
+
+
+    <!--<vector xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:width="64dp"-->
+<!--    android:height="64dp"-->
+<!--    android:viewportWidth="100"-->
+<!--    android:viewportHeight="120">-->
+
+<!--    &lt;!&ndash; Thin pink ring &ndash;&gt;-->
+<!--    <path-->
+<!--        android:fillColor="#E91E63"-->
+<!--        android:pathData="M50,50-->
+<!--                     A26,26 0 1,1 49.9,50-->
+<!--                     M50,55-->
+<!--                     A23,23 0 1,0 50.1,55Z"/>-->
+<!--    <path-->
+<!--        android:fillColor="#E91E63"-->
+<!--        android:pathData="M44,24.5 L50,36.5 L56,24.5 L53,20.5 L47,20.5 Z"/>-->
+<!--</vector>-->
+
+    <!--<vector xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:width="64dp"-->
+<!--    android:height="64dp"-->
+<!--    android:viewportWidth="100"-->
+<!--    android:viewportHeight="100">-->
+
+<!--    &lt;!&ndash; Outer ring &ndash;&gt;-->
+<!--    <path-->
+<!--        android:fillColor="#E91E63"-->
+<!--        android:pathData="M50,0-->
+<!--                         A50,50 0 1,1 49.9,0-->
+<!--                         M50,5-->
+<!--                         A45,45 0 1,0 50.1,5Z"/>-->
+
+<!--    &lt;!&ndash; Diamond base (rotated square) &ndash;&gt;-->
+<!--    <path-->
+<!--        android:fillColor="#FFFFFF"-->
+<!--        android:pathData="M45,0 L50,-10 L55,0 L50,10 Z"/>-->
+
+<!--    &lt;!&ndash; Diamond facets (optional lines to add a shine) &ndash;&gt;-->
+<!--    <path-->
+<!--        android:strokeColor="#E91E63"-->
+<!--        android:strokeWidth="1"-->
+<!--        android:fillColor="@android:color/transparent"-->
+<!--        android:pathData="M50,-10 L50,10 M45,0 L55,0"/>-->
+<!--</vector>-->
