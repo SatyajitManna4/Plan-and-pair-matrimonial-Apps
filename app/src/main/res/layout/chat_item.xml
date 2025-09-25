@@ -5,7 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="4dp">
-
     <!-- Message bubble (text, time, image if needed) -->
     <include
         layout="@layout/item_message" />

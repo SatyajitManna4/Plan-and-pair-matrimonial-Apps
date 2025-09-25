@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/chat_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -70,6 +71,26 @@
         app:layout_constraintBottom_toTopOf="@id/chat_input_bar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+    <TextView
+        android:id="@+id/new_message_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_bg"
+    android:text="1 new message"
+    android:textColor="@android:color/white"
+    android:textStyle="bold"
+    android:paddingLeft="12dp"
+    android:paddingRight="12dp"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
+    android:visibility="gone"
+    android:elevation="8dp"
+    app:layout_constraintBottom_toTopOf="@id/chat_input_bar"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginEnd="16dp"
+    android:layout_marginBottom="12dp"/>
+    <!-- keep above EditText -->
+
 
     <!-- Message input section -->
     <LinearLayout
@@ -84,6 +105,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
+
 
         <EditText
             android:id="@+id/chat_message_input"

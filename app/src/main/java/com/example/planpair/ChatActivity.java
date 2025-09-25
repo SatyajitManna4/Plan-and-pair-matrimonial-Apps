@@ -1,185 +1,7 @@
-/*
 package com.example.planpair;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.planpair.adapters.ChatAdapter;
-import com.example.planpair.models.ChatMessage;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldValue;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-public class ChatActivity extends AppCompatActivity {
-    private RecyclerView chatRecyclerView;
-    private EditText messageEditText;
-    private ImageButton sendButton;
-    private ChatAdapter adapter;
-    private List<ChatMessage> messageList = new ArrayList<>();
-
-    private FirebaseFirestore db;
-    private String currentUserId;
-    private String matchedUserId;
-    private String matchedUserProfileUrl;
-    private String chatId;
-    private static final int PICK_IMAGE_REQUEST = 1;
-    private FirebaseStorage storage;
-    private StorageReference storageRef;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chat);
-
-        matchedUserId = getIntent().getStringExtra("userId");
-        matchedUserProfileUrl = getIntent().getStringExtra("matchedUserProfileUrl");
-        currentUserId = FirebaseAuth.getInstance().getCurrentUser() != null
-                ? FirebaseAuth.getInstance().getCurrentUser().getUid()
-                : null;
-
-
-        if (currentUserId == null || matchedUserId == null) {
-            Toast.makeText(this, "User information missing. Exiting chat.", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
-        chatId = currentUserId.compareTo(matchedUserId) < 0
-                ? currentUserId + "_" + matchedUserId
-                : matchedUserId + "_" + currentUserId;
-
-        db = FirebaseFirestore.getInstance();
-        storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReference();
-
-        chatRecyclerView = findViewById(R.id.chatRecyclerView);
-        messageEditText = findViewById(R.id.chat_message_input);
-        sendButton = findViewById(R.id.message_send_btn);
-
-        adapter = new ChatAdapter(this, messageList, currentUserId, matchedUserProfileUrl);
-        chatRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        chatRecyclerView.setAdapter(adapter);
-
-        loadMessages();
-
-        sendButton.setOnClickListener(v -> {
-            String msg = messageEditText.getText().toString().trim();
-            if (!msg.isEmpty()) {
-                sendMessage(msg);
-                messageEditText.setText(""); // Clear input after sending
-            }
-        });
-
-        ImageButton imagePickerButton = findViewById(R.id.imagePickerButton);
-        imagePickerButton.setOnClickListener(v -> openImagePicker());
-    }
-
-    private void loadMessages() {
-        db.collection("Chats").document(chatId)
-                .collection("Messages")
-                .orderBy("timestamp", Query.Direction.ASCENDING)
-                .addSnapshotListener((snapshots, e) -> {
-                    if (e != null) {
-                        Log.e("Chat", "Listen failed: " + e.getMessage());
-                        return;
-                    }
-                    if (snapshots == null) return;
-                    messageList.clear();
-                    for (DocumentSnapshot doc : snapshots) {
-                        ChatMessage message = doc.toObject(ChatMessage.class);
-                        if (message != null) {
-                            messageList.add(message);
-                        }
-                    }
-                    adapter.notifyDataSetChanged();
-                    if (!messageList.isEmpty()) {
-                        chatRecyclerView.scrollToPosition(messageList.size() - 1);
-                    }
-                });
-    }
-
-    private void sendMessage(String msg) {
-        Map<String, Object> message = new HashMap<>();
-        message.put("senderId", currentUserId);
-        message.put("receiverId", matchedUserId);
-        message.put("message", msg);
-        message.put("timestamp", FieldValue.serverTimestamp());
-        message.put("messageType", "text");
-
-        db.collection("Chats").document(chatId)
-                .collection("Messages")
-                .add(message)
-                .addOnSuccessListener(doc -> Log.d("Chat", "Text message sent"))
-                .addOnFailureListener(e -> Log.e("Chat", "Failed to send text message: " + e.getMessage()));
-    }
-
-    private void openImagePicker() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri imageUri = data.getData();
-            uploadImageToFirebase(imageUri);
-        }
-    }
-
-    private void uploadImageToFirebase(Uri imageUri) {
-        String fileName = "images/" + System.currentTimeMillis() + ".jpg";
-        StorageReference imageRef = storageRef.child(fileName);
-
-        imageRef.putFile(imageUri)
-                .addOnSuccessListener(taskSnapshot -> imageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                    sendImageMessage(uri.toString());
-                }))
-                .addOnFailureListener(e -> Toast.makeText(this, "Upload failed", Toast.LENGTH_SHORT).show());
-    }
-
-    private void sendImageMessage(String imageUrl) {
-        Map<String, Object> message = new HashMap<>();
-        message.put("senderId", currentUserId);
-        message.put("receiverId", matchedUserId);
-        message.put("message", imageUrl);
-        message.put("timestamp", FieldValue.serverTimestamp());
-        message.put("messageType", "image");
-
-        db.collection("Chats").document(chatId)
-                .collection("Messages")
-                .add(message)
-                .addOnSuccessListener(doc -> Log.d("Chat", "Image message sent."))
-                .addOnFailureListener(e -> Log.e("Chat", "Failed to send image message: " + e.getMessage()));
-    }
-}
-*/
-//s
-
-package com.example.planpair;
-
-import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -215,18 +37,17 @@ import java.util.Map;
 public class ChatActivity extends AppCompatActivity {
 
     private static final String TAG = "ChatActivity";
-
     private String currentUserId, otherUserId, otherUserName;
-
     private FirebaseFirestore db;
     private ChatAdapter adapter;
-
     private EditText messageInput;
     private ImageButton sendBtn,backBtn;
     private ImageView profileImage;
     private TextView usernameText;
     private RecyclerView chatRecycler;
 
+    private TextView newMessageIndicator;
+    private int unreadCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -247,10 +68,30 @@ public class ChatActivity extends AppCompatActivity {
         chatRecycler = findViewById(R.id.chat_recycler_view);
         backBtn = findViewById(R.id.back_btn);
 
+        newMessageIndicator = findViewById(R.id.new_message_indicator);
+
         usernameText.setText(otherUserName);
 
         loadOtherUserProfileImage();
         setupRecyclerView();
+        chatRecycler.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager lm = (LinearLayoutManager) recyclerView.getLayoutManager();
+                if (lm != null && lm.findLastCompletelyVisibleItemPosition() == adapter.getItemCount() - 1) {
+                    // ✅ User reached the latest message
+                    unreadCount = 0;
+                    newMessageIndicator.setVisibility(View.GONE);
+                }
+            }
+        });
+        newMessageIndicator.setOnClickListener(v -> {
+            chatRecycler.smoothScrollToPosition(adapter.getItemCount() - 1);
+            unreadCount = 0;
+            newMessageIndicator.setVisibility(View.GONE);
+        });
 
         sendBtn.setOnClickListener(v -> {
             String text = messageInput.getText().toString().trim();
@@ -265,7 +106,6 @@ public class ChatActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
-
     private void loadOtherUserProfileImage() {
         db.collection("UsersData").document(otherUserId).get()
                 .addOnSuccessListener(snapshot -> {
@@ -279,8 +119,6 @@ public class ChatActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
     private void setupRecyclerView() {
         Query query = db.collection("UsersData")
                 .document(currentUserId)
@@ -294,7 +132,10 @@ public class ChatActivity extends AppCompatActivity {
                 .build();
 
         adapter = new ChatAdapter(options, currentUserId);
-        chatRecycler.setLayoutManager(new LinearLayoutManager(this));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);   // 👈 important
+        chatRecycler.setLayoutManager(layoutManager);
         chatRecycler.setAdapter(adapter);
     }
 
@@ -344,7 +185,43 @@ public class ChatActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if (adapter != null) adapter.startListening();
+        if (adapter != null) {
+            adapter.startListening();
+
+            adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+                @Override
+                public void onItemRangeInserted(int positionStart, int itemCount) {
+                    int lastVisiblePosition =
+                            ((LinearLayoutManager) chatRecycler.getLayoutManager())
+                                    .findLastCompletelyVisibleItemPosition();
+
+                    if (lastVisiblePosition == -1) return;
+
+                    // ✅ Get the new message
+                    MessageModel newMessage = adapter.getItem(positionStart);
+
+                    // ✅ Play sound only if it's from the other user
+                    if (newMessage != null && !newMessage.getSenderId().equals(currentUserId)) {
+                        MediaPlayer mediaPlayer = MediaPlayer.create(ChatActivity.this, R.raw.message_tone);
+                        mediaPlayer.setOnCompletionListener(mp -> mp.release()); // release after playing
+                        mediaPlayer.start();
+                    }
+
+                    // ✅ Handle scroll / unread badge
+                    if (lastVisiblePosition == adapter.getItemCount() - itemCount - 1) {
+                        chatRecycler.smoothScrollToPosition(adapter.getItemCount() - 1);
+                        unreadCount = 0;
+                        newMessageIndicator.setVisibility(View.GONE);
+                    } else {
+                        unreadCount++;
+                        newMessageIndicator.setText(unreadCount + " new message"
+                                + (unreadCount > 1 ? "s" : ""));
+                        newMessageIndicator.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+
+        }
     }
 
     @Override
